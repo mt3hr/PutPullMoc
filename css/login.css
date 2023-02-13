@@ -8,7 +8,8 @@
 .form {
   position: relative;
   z-index: 1;
-  background: aliceblue;
+  background: #e6e6e6;
+  border-radius: 5px;
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
@@ -18,9 +19,10 @@
 .text {
   font-family: "Roboto", sans-serif;
   outline: 0;
-  background: rgb(213, 236, 255);
+  background: white;
   width: 100%;
-  border: 0;
+  border-radius: 5px;
+  border: solid 1px silver;
   margin: 0 0 15px;
   padding: 15px;
   box-sizing: border-box;
@@ -28,14 +30,19 @@
   transition: all 0.3s ease;
 }
 .text:hover{
-  opacity:0.6;
+  opacity:0.8;
 }
+.text:focus {
+    outline: solid 2px steelblue;
+}
+
 .button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
   background: steelblue;
-  border: 0.2em solid steelblue;
+  border-radius: 5px;
+  border: solid 2px steelblue;
   color: #FFFFFF;
   width: 50%;
   margin: 0 0 15px;
@@ -47,7 +54,7 @@
 }
 .button:hover {
   background: #FFFFFF;
-  border: 0.2em solid steelblue;
+  border: 2px solid steelblue;
   color: steelblue;
 }
 .form a {
@@ -59,7 +66,12 @@
     color: red;
     font-size: 12px;
 }
-h1{
+.form h1{
+  font-family: "Righteous", sans-serif;
+  font-size: 60px;
+  color: steelblue;
+}
+.form h2{
   font-family: "Roboto", sans-serif;
   font-size: 30px;
   color: steelblue;
