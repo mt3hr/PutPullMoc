@@ -1,0 +1,5 @@
+{
+    "login_system": false,
+    "enable_reset_password": false,
+    "enable_register": false
+}

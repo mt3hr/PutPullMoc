@@ -1,0 +1,32 @@
+table{
+    text-align: center;
+    background-color: white;
+}
+th,td{
+    /* border: solid 1px; */
+    padding: 50px;
+}
+th{
+    color: slategray;
+    font-size: larger;
+}
+.mypagebutton {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: slategray;
+    border: 0.2em solid steelblue;
+    color: #FFFFFF;
+    width: 100%;
+    margin: 0 0 15px;
+    padding: 15px;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.5s ease;
+    cursor: pointer;
+  }
+  .mypagebutton:hover {
+    background: #FFFFFF;
+    border: 0.2em solid steelblue;
+    color: steelblue;
+  }
