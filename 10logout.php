@@ -7,9 +7,12 @@
     <link href="css/login.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <?php
+/*
 $_SESSION['login'] = 0;
 $_SESSION['email']='';
 $_SESSION['userID']='';
+*/
+setcookie("PHPSESSID",'',time() - 1800,'/') // 小路へ。ログイン・ログアウト判断のためには全部消さないとできなかったのでこうしました。
 ?>
 <body>
     <div class="login-page">
