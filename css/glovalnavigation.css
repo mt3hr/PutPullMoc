@@ -1,0 +1,71 @@
+.header {
+    width: 100%;
+    height: 90px;
+    background-color: steelblue;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+    text-align: center;
+}
+.header-inner {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 1240px;
+    max-width: calc(100vw - 30px);
+    height: 100%;
+    margin: 0 auto;
+}
+.header-logo {
+
+}
+.header-logo a {
+    font-size: 50px;
+    font-family: "Righteous", sans-serif;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: white;
+    text-decoration: none;
+}
+.header-nav {
+
+}
+.header-navList{
+    display: flex;
+    height: 100%;
+    list-style-type: none;
+    margin: 0%;
+}
+.header-navListItem:not(:last-child){
+    margin-right: 50px;
+}
+.header-navListItem a{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.5s linear;
+    position: relative;
+}
+.header-navListItem a::after{
+    color: #e6e6e6;
+    text-decoration: none;
+    position: absolute; 
+    left: 0;            
+    content: '';        
+    width: 100%;        
+    height: 5px;
+    bottom: -1px;        
+    background: white;
+    transform: scale(0, 1);
+    transform-origin: center top;
+    transition: transform 0.3s;
+}
+.header-navListItem a:hover::after{
+    transform: scale(1, 1);
+}
+#current{
+    
+}
