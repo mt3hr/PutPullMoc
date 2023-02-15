@@ -37,7 +37,8 @@
                         <th>最終編集日時</th>
                         <th></th>
                     </tr>';
-                $userID=$_POST['WMID'];
+                $userID=$_POST['WMID']; // 小路へ。userIDにWMIDを代入してるけどミス？
+                $WMID=$_POST['WMID'];
                 $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
                 $user = '21jygr01';
                 $password = '21jygr01';
@@ -45,19 +46,22 @@
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
                 // 最終編集日時の属性を作成し、RegisterDatetimeから書き換える。
-                $sql='SELECT WMID,WMName,RegisterDatetime FROM mockup WHERE WMID = ?;';
+                $sql='SELECT WMID,WMName,RegisterDatetime,VersionID FROM mockup WHERE WMID = ?;';
                 $stmt = $pdo->prepare($sql,array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
                 $stmt->execute(array($WMID));   //SQL文を実行
                 $count = $stmt->rowCount();
             
                 
                 while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-                    
-                    
+                    /* 小路へ。/にアクセスするように変更しました。
                     print '<tr>
-                    <td><a href="33mockupVerSearch.php?WMID="'.$row['WMID'].'"&WMName="'.$row['WMName'].'" >'.$row['WMName'].'</a></td>
+                    <td><a href="33mockupVerSearch.ph?WMID="'.$row['WMID'].'"&WMName="'.$row['WMName'].'" >'.$row['WMName'].'</a></td>
                     <td>'.$row['RegisterDatetime'].'</td>
-                    
+                    </tr>';
+                    */
+                    print '<tr>
+                    <td><a href="/?wm_id='.$row["WMID"].'&version_id='.$row["VersionID"].'">'.$row["WMName"].'</a></td>
+                    <td>'.$row['RegisterDatetime'].'</td>
                     </tr>';
                 }
                     

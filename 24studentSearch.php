@@ -78,7 +78,7 @@
                     <td>'.$row['LastName'].'</td><td> '.$row['FirstName'].'</td>
                     <td>'.$row['Email'].'</td>
                     <td>
-                        <form method="POST" action="./31.html"><input type="hidden" name="userID" value="'.$row['UserID'].'"><input class="mypagebutton" type="submit" value="課題確認"></form>
+                        <form method="POST" action="./31mockupSearch.php"><input type="hidden" name="userID" value="'.$row['UserID'].'"><input class="mypagebutton" type="submit" value="課題確認"></form>
                        
                     </td>
                     <td>
