@@ -1,25 +1,3 @@
-body {
-    background-color: white;
-}
-
-table {
-    text-align: center;
-    background-color: #e6e6e6;
-    border-radius: 5px;
-    width: 1000px;
-    height: 500px;
-}
-
-th,
-td {
-    /* border: solid 1px; */
-}
-
-th {
-    color: steelblue;
-    font-size: larger;
-}
-
 .menu-page {
     width: 1000px;
     padding: 5% 0 0;
@@ -34,7 +12,7 @@ th {
     color: steelblue;
 }
 
-.mypagebutton {
+.menubutton {
     margin: auto;
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
@@ -52,7 +30,7 @@ th {
     cursor: pointer;
 }
 
-.mypagebutton:hover {
+.menubutton:hover {
     background: #FFFFFF;
     border: 2px solid steelblue;
     color: steelblue;
@@ -63,7 +41,7 @@ th {
     text-align: center;
 }
 
-.mypagebutton:not(:last-child) {
+.menubutton:not(:last-child) {
     margin-right: 100px;
 }
 
@@ -88,4 +66,26 @@ th {
 
 .text:focus {
     outline: solid 2px steelblue;
+}
+table {
+    text-align: center;
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    width: 1000px;
+    height: 500px;
+    table-layout: fixed;
+}
+
+th,
+td {
+    /* border: solid 1px; */
+}
+
+th {
+    color: steelblue;
+    font-size: larger;
+}
+.button-area {
+    padding-top: 100px;
+    text-align: center;
 }

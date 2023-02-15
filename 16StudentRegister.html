@@ -7,8 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
-    <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/mypage.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/studentregister.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/glovalnavigation.css" rel="stylesheet" type="text/css" media="all">
     <header class="header">
         <div class="header-inner">
@@ -31,13 +30,18 @@
 <body>
     <div class="menu-page">
         <h1>| 学生登録</h1>
-        <h2>ファイル形式</h2>
-        <p>学生ごとに学籍番号、姓、名、メールアドレス、パスワードを入力したCSVファイル</p>
-        <p>例：00XX0000, 山田, 太郎, 00XX0000@jec.ac.jp, **********</p>
-        <form method="POST" action="">
-            <input class="menubutton" type="submit" value="ファイルを選択">
-        </form>
-        <button class="menubutton" type="button" onclick="history.back()">戻る</button>
+        <div class="paper">
+            <h2>ファイル形式</h2>
+            <p>学生ごとに学籍番号、姓、名、メールアドレス、パスワードを入力したCSVファイル</p>
+            <p>例：00XX0000, 山田, 太郎, 00XX0000@jec.ac.jp, **********</p>
+
+            <form method="POST" action="">
+                <input class="filebutton" type="submit" value="ファイルを選択">
+            </form>
+        </div>
+        <div class="button-area">
+            <button class="menubutton" type="button" onclick="history.back()">戻る</button>
+        </div>
     </div>
 </body>
 
