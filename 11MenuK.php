@@ -13,9 +13,9 @@
     </div>
     <nav>
         <a href="11MenuK.php">メニュー</a>
-        <a href="11MenuK.php">学生一覧</a>
-        <a href="11MenuK.php">保存一覧</a>
-        <a href="11MenuK.php">新規作成</a>
+        <a href="24studentSearch.php">学生一覧</a>
+        <a href="31mockupSearch.php">保存一覧</a>
+        <a href="/">新規作成</a>
         <a href="10logout.php">ログアウト</a>
         <div class="animation start-home"></div>
     </nav>

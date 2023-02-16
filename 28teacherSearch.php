@@ -10,14 +10,14 @@
 
     </header>
     <div class="logo">
-        <a href="11MenuK.html"><img src="./img/ppm.png" alt="メニュー"></a>
+        <a href="11MenuK.php"><img src="./img/ppm.png" alt="メニュー"></a>
     </div>
     <nav>
-        <a href="11MenuK.html">メニュー</a>
-        <a href="11MenuK.html">学生一覧</a>
-        <a href="11MenuK.html">保存一覧</a>
-        <a href="11MenuK.html">新規作成</a>
-        <a href="10logout.html">ログアウト</a>
+        <a href="11MenuK.php">メニュー</a>
+        <a href="24studentSearch.php">学生一覧</a>
+        <a href="31mockupSearch.php">保存一覧</a>
+        <a href="/">新規作成</a>
+        <a href="10logout.php">ログアウト</a>
         <div class="animation start-home"></div>
     </nav>
 </head>
@@ -29,14 +29,14 @@
 
 
         <ul>
-            <form action="24KyouinRegister.html">
+            <form action="24KyouinRegister.php">
                 <li>
                     <p>名前で検索
                     </p>
                     <input class="text" type="text" value="氏名"><input type="submit" class="menubutton" value="検索">
                 </li>
             </form>
-            <form action="24KyouinRegister.html">
+            <form action="24KyouinRegister.php">
                 <li>
                     <p>年度別絞り込み</p>
                 </li>
@@ -75,8 +75,8 @@
                     <td>'.$row['FirstName'].'</td>
                     <td>'.$row['Email'].'</td>
                     <td>
-                        <form method="POST" action="/31.html"><input type="hidden" name="userID" value="'.$row['UserID'].'>"<input class="mypagebutton" type="submit" value="課題確認"></form>
-                        <form method="POST" action="/26studentSearch.html"><input type="hidden" name="userID" value="'.$row['UserID'].'><input class="mypagebutton" type="submit" value="削除"></form>
+                        <form method="POST" action="/31mockupSearch.php"><input type="hidden" name="userID" value="'.$row['UserID'].'>"<input class="mypagebutton" type="submit" value="課題確認"></form>
+                        <form method="POST" action="/26studentSearch.php"><input type="hidden" name="userID" value="'.$row['UserID'].'><input class="mypagebutton" type="submit" value="削除"></form>
                     </td>
                     </tr>';
                 }

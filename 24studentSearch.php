@@ -21,14 +21,14 @@
 
     </header>
     <div class="logo">
-        <a href="11MenuK.html"><img src="./img/ppm.png" alt="メニュー"></a>
+        <a href="11MenuK.php"><img src="./img/ppm.png" alt="メニュー"></a>
     </div>
     <nav>
         <a href="11MenuK.php">メニュー</a>
-        <a href="11MenuK.html">学生一覧</a>
-        <a href="11MenuK.html">保存一覧</a>
-        <a href="11MenuK.html">新規作成</a>
-        <a href="10logout.html">ログアウト</a>
+        <a href="24studentSearch.php">学生一覧</a>
+        <a href="31mockupSearch.php">保存一覧</a>
+        <a href="/">新規作成</a>
+        <a href="10logout.php">ログアウト</a>
         <div class="animation start-home"></div>
     </nav>
 </head>
@@ -41,14 +41,14 @@
 
         <ul>
             
-            <form action="24KyouinRegister.html">
+            <form action="24KyouinRegister.php">
                 <li>
                     <p>名前で検索
                     </p>
                     <input class="text" type="text" value="氏名"><input type="submit" class="menubutton" value="検索">
                 </li>
             </form>
-            <form action="24KyouinRegister.html">
+            <form action="24KyouinRegister.php">
                 <li>
                     <p>年度別絞り込み</p>
                 </li>
