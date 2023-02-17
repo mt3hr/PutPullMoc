@@ -4,23 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <title>登録情報変更</title>
-    <link href="css/login.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
     <link href="css/mypage.css" rel="stylesheet" type="text/css" media="all">
-    <header>
-
+    <link href="css/glovalnavigation.css" rel="stylesheet" type="text/css" media="all">
+    <header class="header">
+        <div class="header-inner">
+            <h1 class="header-logo">
+                <a href="11MenuK.html">PutPullMock</a>
+            </h1>
+            <nav class="header-nav">
+                <ul class="header-navList">
+                    <li class="header-navListItem"><a id="current" href="11MenuK.html">メニュー</a></li>
+                    <li class="header-navListItem"><a href="11MenuK.html">学生一覧</a></li>
+                    <li class="header-navListItem"><a href="11MenuK.html">保存一覧</a></li>
+                    <li class="header-navListItem"><a href="11MenuK.html">新規作成</a></li>
+                    <li class="header-navListItem"><a href="10logout.html">ログアウト</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <div class="logo">
-        <a href="11MenuK.html"><img src="./img/ppm.png" alt="メニュー"></a>
-    </div>
-    <nav>
-        <a href="11MenuK.html">メニュー</a>
-        <a href="11MenuK.html">学生一覧</a>
-        <a href="11MenuK.html">保存一覧</a>
-        <a href="11MenuK.html">新規作成</a>
-        <a href="10logout.html">ログアウト</a>
-        <div class="animation start-home"></div>
-    </nav>
 </head>
 
 <body>
@@ -44,8 +48,10 @@
                     </tr>
 
                 </table>
-                <button class="menubutton" type="button" onclick="history.back()">戻る</button>
-                <input class="menubutton" type="submit" value="更新">
+                <div class="button-area">
+                    <button class="mypagebutton" type="button" onclick="history.back()">戻る</button>
+                    <input class="mypagebutton" type="submit" value="更新">
+                </div>
             </form>
         </div>
     </div>
