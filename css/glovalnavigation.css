@@ -4,6 +4,10 @@
     background-color: steelblue;
     box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
     text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100; 
 }
 .header-inner {
     display: flex;
