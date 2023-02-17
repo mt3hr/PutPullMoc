@@ -6,20 +6,32 @@
     <title>新規教師登録</title>
     <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
 
-    <link href="css/mypage.css" rel="stylesheet" type="text/css" media="all">    <header>
+    <link href="css/mypage.css" rel="stylesheet" type="text/css" media="all">
+    <header>
 
     </header>
     <div class="logo">
         <a href="11MenuK.php"><img src="./img/ppm.png" alt="メニュー"></a>
     </div>
-    <nav>
-        <a href="11MenuK.php">メニュー</a>
-        <a href="24studentSearch.php">学生一覧</a>
-        <a href="31mockupSearch.php">保存一覧</a>
-        <a href="/">新規作成</a>
-        <a href="10logout.php">ログアウト</a>
-        <div class="animation start-home"></div>
-    </nav>
+    <?php
+    if ($_SESSION['position'] == "t") {
+        print '<nav><a href="11MenuK.php">メニュー</a>
+            <a href="24studentSearch.php">学生一覧</a>
+            <a href="11MenuK.php">保存一覧</a>
+            <a href="11MenuK.php">新規作成</a>
+            <a href="10logout.php">ログアウト</a>
+            <div class="animation start-home"></div>
+            </nav>';
+    } else {
+        print '<nav><a href="11MenuK.php">メニュー</a>
+            <a href="11MenuK.php">保存一覧</a>
+            <a href="11MenuK.php">新規作成</a>
+            <a href="10logout.php">ログアウト</a>
+            <div class="animation start-home"></div>
+            </nav>';
+    }
+
+    ?>
 </head>
 
 <body>
@@ -31,18 +43,18 @@
 
             print "<tr>
                 <th>氏名</th>
-                <td>".$_POST['surname']."</td>
-                <td>".$_POST['name']."</td>
+                <td>" . $_POST['surname'] . "</td>
+                <td>" . $_POST['name'] . "</td>
             </tr>
             <tr>
                 <th>メールアドレス</th>
-                <td>".$_POST['email']."</td>
+                <td>" . $_POST['email'] . "</td>
             </tr>
             <tr>
                 <th>パスワード</th>
                 <td>******</td>
             </tr>"
-            ?>
+                ?>
         </table>
         <button class="menubutton" type="button" onclick="history.back()">戻る</button>
         <form action="11MenuK.php">

@@ -73,7 +73,7 @@ if ($_errorCode == ture) {
                     $_SESSION['regstMail'] = $Email;
                     $_SESSION['regstPass'] = $pass;
 
-                    $uri = './22KyouinRegister.php';
+                    $uri = './18StudentRegisterList.php';
                     header("Location: " . $uri);
                 } else {
                     print 'そのメールアドレスは、既に登録されています。';

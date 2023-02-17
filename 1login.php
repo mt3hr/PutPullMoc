@@ -9,12 +9,12 @@
 
 <?php
 //userがログインしていないかチェック
-if($_SESSION['login']??''==1) {
+if ($_SESSION['login'] ?? '' == 1) {
     $uri = './11MenuK.php';
-    header("Location: ".$uri);
-}else{
-    
-    
+    header("Location: " . $uri);
+} else {
+
+
 }
 ?>
 
@@ -24,13 +24,14 @@ if($_SESSION['login']??''==1) {
             <h1>ログイン</h1>
             <!-- <form method="POST" action="/1logincheck.php"> -->
             <form method="POST" action="./1logincheck.php">
-            <p id="error">
-                <?php
-		        session_start();
-		        $errorMsg = $_SESSION['errorMsg']??'';
-		        print "<p>".$errorMsg."</p>";
-		        $_SESSION['errorMsg'] = null;
-		    ?></p>
+                <p id="error">
+                    <?php
+                    session_start();
+                    $errorMsg = $_SESSION['errorMsg'] ?? '';
+                    print "<p>" . $errorMsg . "</p>";
+                    $_SESSION['errorMsg'] = null;
+                    ?>
+                </p>
                 <input class="text" type="text" name="mail" placeholder="メールアドレス" />
                 <input class="text" type="password" name="pass" placeholder="パスワード" />
                 <input class="button" type="submit" name="submit" value="教員ログイン">

@@ -11,7 +11,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
 $sql = '
-        DELETE FROM student WHERE UserID = ?;';
+        DELETE FROM teacher WHERE UserID = ?;';
 $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
 $stmt->execute(array($userID)); //SQL文を実行
 
@@ -23,7 +23,6 @@ $stmt->execute(array($userID)); //SQL文を実行
 
 
 
-
-$uri = './27studentSearchDeleteFinish.php';
+$uri = './30teacherSearchDeleteFinish.php';
 header("Location: " . $uri);
 ?>

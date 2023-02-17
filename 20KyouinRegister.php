@@ -50,12 +50,12 @@
 
             </table>
             <?php
-		        session_start();
-		        $errorMsg = $_SESSION['errorMsg']??'';
-		        print "<p id='error'>".$errorMsg."</p>";
-		        $_SESSION['errorMsg'] = null;
-		    ?>
-            
+            session_start();
+            $errorMsg = $_SESSION['errorMsg'] ?? '';
+            print "<p id='error'>" . $errorMsg . "</p>";
+            $_SESSION['errorMsg'] = null;
+            ?>
+
             <input class="menubutton" type="submit" value="確認">
             <button class="menubutton" type="button" onclick="history.back()">戻る</button>
         </form>

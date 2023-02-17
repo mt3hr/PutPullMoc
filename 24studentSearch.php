@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <?php
-            
-    session_cache_limiter('none');
-    session_start();
-        $userID=$_SESSION['userID'];
-        $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
-        $user = '21jygr01';
-        $password = '21jygr01';
-        $pdo = new PDO($dsn, $user, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
+
+session_cache_limiter('none');
+session_start();
+$userID = $_SESSION['userID'];
+$dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
+$user = '21jygr01';
+$password = '21jygr01';
+$pdo = new PDO($dsn, $user, $password);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 ?>
+
 <head>
     <meta charset="UTF-8">
     <title>学生検索</title>
@@ -40,7 +41,7 @@
 
 
         <ul>
-            
+
             <form action="24KyouinRegister.php">
                 <li>
                     <p>名前で検索
@@ -64,33 +65,38 @@
                 <th></th>
             </tr>
             <?php
-                $sql='SELECT userTable.UserID,Email,LastName,FirstName FROM userTable INNER JOIN student ON userTable.UserID = student.UserID;';
-                $stmt = $pdo->prepare($sql,array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-                $stmt->execute(array($userID));   //SQL文を実行
-                $count = $stmt->rowCount();
-            
-                
-                while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-                    
-                    
-                    print '<tr>
-                    <td>'.$row['UserID'].'</td>
-                    <td>'.$row['LastName'].'</td><td> '.$row['FirstName'].'</td>
-                    <td>'.$row['Email'].'</td>
+            $sql = 'SELECT userTable.UserID,Email,LastName,FirstName FROM userTable INNER JOIN student ON userTable.UserID = student.UserID;';
+            $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+            $stmt->execute(array($userID)); //SQL文を実行
+            $count = $stmt->rowCount();
+
+
+            while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
+
+
+                print '<tr>
+                    <td>' . $row['UserID'] . '</td>
+                    <td>' . $row['LastName'] . '</td><td> ' . $row['FirstName'] . '</td>
+                    <td>' . $row['Email'] . '</td>
                     <td>
-                        <form method="POST" action="./31mockupSearch.php"><input type="hidden" name="userID" value="'.$row['UserID'].'"><input class="mypagebutton" type="submit" value="課題確認"></form>
-                       
+                        <form method="POST" action="./31mockupSearch.html">
+                            <input type="hidden" name="userID" value="' . $row['userID'] . '">
+                            <input class="mypagebutton" type="submit" value="課題確認">
+                        </form>
                     </td>
                     <td>
-                     <form method="POST" action="./26studentSearchDelete.php"><input type="hidden" name="userID" value="'.$row['UserID'].'"><input class="mypagebutton" type="submit" value="削除"></form>
+                     <form method="POST" action="./26studentSearchDelete.php">
+                        <input type="hidden" name="userID" value="' . $row['UserID'] . '">
+                        <input class="mypagebutton" type="submit" value="削除">
+                    </form>
                      </td>
                     </tr>';
-                }
-                    
-                
+            }
+
+
             ?>
-            
-            
+
+
         </table>
         <p id="error">検索結果０件</p>
     </div>

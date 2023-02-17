@@ -1,37 +1,82 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>メニュー</title>
-<header>
+    <meta charset="UTF-8">
+    <title>メニュー</title>
+    <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
+    <header>
 
-</header>
-    <a href="11MenuK.php"><img src="./img/PutPullMoc.png" alt="メニュー"></a>
-    <div id="nav">
-        <table>
-            <th><a href="11MenuS.php">メニュー</a></th>
-            <th><a href="31mockupSearch.php">保存一覧</a></th>
-            <th><a href="/">新規作成</a></th>
-        </table>
-
+    </header>
+    <div class="logo">
+        <a href="11MenuK.php"><img src="./img/ppm.png" alt="メニュー"></a>
     </div>
-    <button type="button" onclick="location.href='10login.php'">ログアウト</button>
+    <?php
+    if ($_SESSION['position'] == "t") {
+        print '<nav><a href="11MenuK.php">メニュー</a>
+            <a href="24studentSearch.php">学生一覧</a>
+            <a href="11MenuK.php">保存一覧</a>
+            <a href="11MenuK.php">新規作成</a>
+            <a href="10logout.php">ログアウト</a>
+            <div class="animation start-home"></div>
+            </nav>';
+    } else {
+        print '<nav><a href="11MenuK.php">メニュー</a>
+            <a href="11MenuK.php">保存一覧</a>
+            <a href="11MenuK.php">新規作成</a>
+            <a href="10logout.php">ログアウト</a>
+            <div class="animation start-home"></div>
+            </nav>';
+    }
+
+    ?>
 </head>
+
 <body>
-    
-    <h2>メニュー</h2>
-    <form method="POST" action="/1login.php">
-        <p><input type="submit" name="submit" value="保存一覧"></p>
-    </form>
+    <div class="menu-page">
+        <h2> メニュー</h2>
+        <div class="flex">
 
-    <form method="POST" action="/">
-        <p><input type="submit" name="submit" value="新規作成"></p>
-        </form>
 
-    <form method="POST" action="/10logout.php">
-        <p><input type="submit" name="submit" value="ログアウト"></p>
-        </form>
+            <div class="item">
+                <form method="POST" action="./31mockupSearch.php">
+                    <input class="menubutton" type="submit" name="submit" value="保存一覧">
+                    <?php
+                    session_start();
+                    $userID = $_SESSION['userID'];
+                    ptint('<input type="hidden" name="userID" value="' . $userID . '">');
+                    ?>
+                    <p>保存済みモックアップ</p>
+                </form>
+            </div>
 
+            <div class="item">
+                <form method="POST" action="./index.php">
+                    <input class="menubutton" type="submit" name="submit" value="新規作成">
+                    <p>モックアップ新規作成</p>
+                </form>
+            </div>
+            <div class="item">
+                <form method="POST" action="./10logout.php">
+                    <input class="menubutton" type="submit" name="submit" value="ログアウト">
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
+
+<script>
+    $(function () {
+        var menu = $('#nav'),
+            offset = menu.offset();
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > offset.top) {
+                menu.addClass('fixed');
+            } else {
+                menu.removeClass('fixed');
+            }
+        });
+    });
+</script>
