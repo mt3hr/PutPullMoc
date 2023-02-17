@@ -1,6 +1,6 @@
 .menu-page {
     width: 1000px;
-    padding: 5% 0 0;
+    padding: 8% 0 0;
     margin: auto;
     position: relative;
     justify-content: center;
@@ -67,6 +67,30 @@
 .text:focus {
     outline: solid 2px steelblue;
 }
+
+.text-name {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: white;
+    width: 250px;
+    height: 30px;
+    border-radius: 5px;
+    border: solid 1px silver;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.text-name:hover {
+    opacity: 0.8;
+}
+
+.text-name:focus {
+    outline: solid 2px steelblue;
+}
+
 table {
     text-align: center;
     background-color: #e6e6e6;
@@ -80,10 +104,17 @@ th,
 td {
     /* border: solid 1px; */
 }
+td.name{
+    text-align: left;
+}
 
 th {
     color: steelblue;
     font-size: larger;
+    text-align: right;
+}
+td.left{
+    text-align: left;
 }
 .button-area {
     padding-top: 100px;

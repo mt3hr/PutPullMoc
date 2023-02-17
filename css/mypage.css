@@ -18,11 +18,15 @@ td {
 th {
     color: steelblue;
     font-size: larger;
+    text-align: right;
+}
+td.left{
+    text-align: left;
 }
 
 .menu-page {
     width: 1000px;
-    padding: 5% 0 0;
+    padding: 8% 0 0;
     margin: auto;
     position: relative;
     justify-content: center;
