@@ -8,15 +8,25 @@
 
 </header>
     <a href="11MenuK.html"><img src="./img/PutPullMoc.png" alt="メニュー"></a>
-    <div id="nav">
-        <table>
-            <th><a href="11MenuK.php">メニュー</a></th>
-            <th><a href="11MenuK.html">学生一覧</a></th>
-            <th><a href="11MenuK.html">保存一覧</a></th>
-            <th><a href="11MenuK.html">新規作成</a></th>
-        </table>
-        <button type="button" onclick="location.href='10login.html'">ログアウト</button>
-    </div>
+    <?php
+        if($_SESSION['position'] == "t"){
+            print '<nav><a href="11MenuK.php">メニュー</a>
+            <a href="24studentSearch.php">学生一覧</a>
+            <a href="11MenuK.php">保存一覧</a>
+            <a href="11MenuK.php">新規作成</a>
+            <a href="10logout.php">ログアウト</a>
+            <div class="animation start-home"></div>
+            </nav>';
+        }else{
+            print '<nav><a href="11MenuK.php">メニュー</a>
+            <a href="11MenuK.php">保存一覧</a>
+            <a href="11MenuK.php">新規作成</a>
+            <a href="10logout.php">ログアウト</a>
+            <div class="animation start-home"></div>
+            </nav>';
+        }
+        
+        ?>
 </head>
 <body> 
     <h2>学生情報削除</h2>

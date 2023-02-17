@@ -35,7 +35,7 @@ if($_SESSION['login']??''==1) {
                 <input class="text" type="password" name="pass" placeholder="パスワード" />
                 <input class="button" type="submit" name="submit" value="教員ログイン">
             </form>
-            <form method="POST" action="./12MenuS.html">
+            <form method="POST" action="./12MenuS.php">
                 <input class="button" type="submit" name="submit" value="学生ログイン">
             </form>
             <a href="./3PWreset.php">パスワードを忘れた場合</a>

@@ -29,7 +29,7 @@
 // INSERT INTO `user` (`UserID`, `Email`, `LastName`, `FirstName`, `PassWord`) VALUES
 // 	('21jy0000', '21jy0000@jec.ac.jp', '電子', '太郎', 'abc'),
 // 	('21jy0200', '21jy0200@jec.ac.jp', 'sawaguchi', 'takashi', 'abc');
-//]
+//
 
 $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
 $user = '21jygr01';
@@ -48,7 +48,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     if($count == 0){
         $_SESSION['errorMsg'] = "メールアドレスまたはパスワードが間違っています。";
         $uri = $_SERVER['HTTP_REFERER']; 
-    header("Location: ".$uri);
+        header("Location: ".$uri);
     
     }else{
         $_SESSION['login'] = 1;
@@ -56,6 +56,15 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $_SESSION['email']=$row['E-mail'];
             $_SESSION['userID']=$row['UserID'];
             $session_time = 1440/24*60*7;
+        }
+        $sql="SELECT UserID FROM student WHERE UserID = ?";
+        $stmt = $pdo->prepare($sql,array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+        $stmt->execute(array($_SESSION['userID']));   //SQL文を実行
+        $count = $stmt->rowCount();
+        if($count==0){
+            $_SESSION['position'] = "t";
+        }else{
+            $_SESSION['position'] = "s";
         }
         $uri = './11MenuK.php';
         header("Location: ".$uri);

@@ -9,15 +9,11 @@
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
     session_start();
-    $sql='SELECT UserID,E-mail,LastName,FirstName FROM user WHERE UserID = ?;'
-    $stmt = $pdo->prepare($sql,array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-    $stmt->execute(array($userID));   //SQL文を実行
-    $count = $stmt->rowCount();
+
+
 
     
-    while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-        
-    }
+    
     if($_POST['lastname']??''!=null){
         $lastname= htmlspecialchars($_POST['lastname'] , ENT_QUOTES);
     }else{
@@ -46,31 +42,34 @@
     
     }
 
-    if(is_mail($Email)){
+    if(is_mail($email)){
 
 
         
+        // TODO 情報更新をさせる
+    $sql='UPDATE userTable SET LastName = ?,FirstName =?,Email = ? WHERE UserID = ?;'
+    $stmt = $pdo->prepare($sql,array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+    $stmt->execute(array($lastname,$firstname,$email));   //SQL文を実行
+  
+
+    }else{
         
-    
-    $uri = './5PWreset2.php';
-    header("Location: ".$uri);
-
-}else{
-    
-        $_SESSION['errorMsg'] = "メールアドレスの形になっていません";
-}
-$uri = $_SERVER['HTTP_REFERER']; 
-// header("Location: ".$uri);
-
-//メールアドレス入力形式チェック　
-function is_mail($str) {
-    if (preg_match('/^[a-z0-9._+^~-]+@[a-z0-9.-]+$/i', $str)) {
-        return true;
-    } else {
-        return false;
+        $_SESSION['errorMsg'] = "メールアドレスの形になっていません"; 
+        $uri = $_SERVER['HTTP_REFERER']; 
+        header("Location: ".$uri);
     }
-}
+   
 
+    //メールアドレス入力形式チェック　
+    function is_mail($str) {
+        if (preg_match('/^[a-z0-9._+^~-]+@[a-z0-9.-]+$/i', $str)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    
         
     
 ?>
