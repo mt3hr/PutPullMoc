@@ -12,14 +12,25 @@
     <div class="logo">
         <a href="11MenuK.html"><img src="./img/ppm.png" alt="メニュー"></a>
     </div>
-    <nav>
-        <a href="11MenuK.html">メニュー</a>
-        <a href="11MenuK.html">学生一覧</a>
-        <a href="11MenuK.html">保存一覧</a>
-        <a href="11MenuK.html">新規作成</a>
-        <a href="10logout.html">ログアウト</a>
-        <div class="animation start-home"></div>
-    </nav>
+    <?php
+        if($_SESSION['position'] == "t"){
+            print '<nav><a href="11MenuK.php">メニュー</a>
+            <a href="24studentSearch.php">学生一覧</a>
+            <a href="11MenuK.php">保存一覧</a>
+            <a href="11MenuK.php">新規作成</a>
+            <a href="10logout.php">ログアウト</a>
+            <div class="animation start-home"></div>
+            </nav>';
+        }else{
+            print '<nav><a href="11MenuK.php">メニュー</a>
+            <a href="11MenuK.php">保存一覧</a>
+            <a href="11MenuK.php">新規作成</a>
+            <a href="10logout.php">ログアウト</a>
+            <div class="animation start-home"></div>
+            </nav>';
+        }
+        
+        ?>
 </head>
 
 <body>
@@ -28,20 +39,7 @@
         <p>検索する学生情報を入力してください。</p>
 
 
-        <ul>
-            <form action="24KyouinRegister.html">
-                <li>
-                    <p>名前で検索
-                    </p>
-                    <input class="text" type="text" value="氏名"><input type="submit" class="menubutton" value="検索">
-                </li>
-            </form>
-            <form action="24KyouinRegister.html">
-                <li>
-                    <p>年度別絞り込み</p>
-                </li>
-            </form>
-        </ul>
+        
         <table>
             <tr>
                 <th>姓</th>
@@ -75,8 +73,14 @@
                     <td>'.$row['FirstName'].'</td>
                     <td>'.$row['Email'].'</td>
                     <td>
-                        <form method="POST" action="/31.html"><input type="hidden" name="userID" value="'.$row['UserID'].'>"<input class="mypagebutton" type="submit" value="課題確認"></form>
-                        <form method="POST" action="/26studentSearch.html"><input type="hidden" name="userID" value="'.$row['UserID'].'><input class="mypagebutton" type="submit" value="削除"></form>
+                        <form method="POST" action="/31mockupSearch.html">
+                            <input type="hidden" name="userID" value="'.$row['userID'].'>"
+                            <input class="mypagebutton" type="submit" value="課題確認">
+                        </form>
+                        <form method="POST" action="/29teacherSearchDelete.html">
+                            <input type="hidden" name="userID" value="'.$row['UserID'].'>
+                            <input class="mypagebutton" type="submit" value="削除">
+                        </form>
                     </td>
                     </tr>';
                 }
