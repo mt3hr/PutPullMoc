@@ -53,7 +53,7 @@ if ($count == 0) {
 } else {
     $_SESSION['login'] = 1;
     while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-        $_SESSION['email'] = $row['E-mail'];
+        $_SESSION['email'] = $row['Email'];
         $_SESSION['userID'] = $row['UserID'];
         $session_time = 1440 / 24 * 60 * 7;
     }
@@ -68,7 +68,6 @@ if ($count == 0) {
     }
     $uri = './11MenuK.php';
     header("Location: " . $uri);
-
 }
 // 
 

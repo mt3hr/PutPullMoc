@@ -73,13 +73,12 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
 
-
                 print '<tr>
                     <td>' . $row['UserID'] . '</td>
                     <td>' . $row['LastName'] . '</td><td> ' . $row['FirstName'] . '</td>
                     <td>' . $row['Email'] . '</td>
                     <td>
-                        <form method="POST" action="./31mockupSearch.html">
+                        <form method="POST" action="./31mockupSearch.php">
                             <input type="hidden" name="userID" value="' . $row['userID'] . '">
                             <input class="mypagebutton" type="submit" value="課題確認">
                         </form>

@@ -28,14 +28,13 @@
         <h1>| 保存モックアップ一覧</h1>
 
         <?php
+        session_cache_limiter('none');
+        session_start();
         if ($_POST['userID'] ?? '' != null) {
             $userID = htmlspecialchars($_POST['userID'], ENT_QUOTES);
         } else {
             $userID = $_SESSION['userID'];
-
         }
-        session_cache_limiter('none');
-        session_start();
         print '<p>' . $_POST['userName'] . 'さんのワークスペース</p>
                 <table>
                     <tr>
@@ -50,7 +49,7 @@
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // 最終編集日時の属性を作成し、RegisterDatetimeから書き換える。
-        $sql = 'SELECT WMID,WMName,RegisterDatetime FROM mockup WHERE UserID = ? VersionId=1;';
+        $sql = 'SELECT WMID,WMName,RegisterDatetime FROM mockup WHERE UserID = ? AND VersionID=1;';
         $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
         $stmt->execute(array($userID)); //SQL文を実行
         $count = $stmt->rowCount();
