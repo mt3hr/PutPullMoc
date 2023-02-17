@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>新規生徒登録</title>
+    <title>新規学生登録</title>
     <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
     <header>
 

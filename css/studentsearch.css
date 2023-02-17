@@ -35,6 +35,7 @@
     border: 2px solid steelblue;
     color: steelblue;
 }
+
 .searchbutton {
     margin: auto;
     font-family: "Roboto", sans-serif;
@@ -65,6 +66,7 @@
 .menubutton:not(:last-child) {
     margin-right: 100px;
 }
+
 .paper {
     text-align: center;
     background-color: #e6e6e6;
@@ -72,8 +74,15 @@
     width: 1000px;
     height: 500px;
 }
-.paperpad{
+
+.paperpad {
     padding-top: 80px;
+}
+
+.search-option {
+    text-align: center;
+    width: 1000px;
+    height: 200px;
 }
 
 .text {
@@ -98,6 +107,7 @@
 .text:focus {
     outline: solid 2px steelblue;
 }
+
 table {
     text-align: center;
     background-color: #e6e6e6;
@@ -117,10 +127,16 @@ th {
     color: steelblue;
     font-size: larger;
 }
+
 .button-area {
     padding-top: 100px;
     text-align: center;
 }
-ul{
+
+ul {
     list-style-type: none;
+    text-align: center;
+}
+li{
+    text-align: center;
 }
