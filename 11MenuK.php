@@ -55,7 +55,7 @@
             <div class="menuitem">
                 <form method="POST" action="./24studentSearch.php">
                     <div class="icon">
-                        <img src="img/teacherListIcon.png">
+                        <img src="img/studentListIcon.png">
                     </div>
                     <input class="menubutton" type="submit" name="submit" value="学生一覧">
                     <p>学生の検索、課題の閲覧、学生情報の削除</p>
