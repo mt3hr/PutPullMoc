@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>マイページ</title>
+    <title>新規生徒登録</title>
     <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/mypage.css" rel="stylesheet" type="text/css" media="all">
     <header>
@@ -41,6 +41,10 @@
             <p>登録する学生情報を入力してください。</p>
             <form action="16SRchack.php" method="POST">
                 <table>
+                <tr>
+                    <th>ID</th>
+                    <td><input class="text" size="25" type="text" name="userID" placeholder="UserID"></td>
+                </tr>
 
                     <tr>
                         <th>氏名</th>

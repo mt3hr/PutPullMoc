@@ -31,7 +31,7 @@
             <table>
                 <tr>
                     <th>ID</th>
-                    <td><input class="text" size="25" type="text" name="userID" placeholder="姓"></td>
+                    <td><input class="text" size="25" type="text" name="userID" placeholder="UserID"></td>
                 </tr>
                 <tr>
                     <th>氏名</th>
