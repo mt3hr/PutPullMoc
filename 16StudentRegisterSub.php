@@ -39,7 +39,7 @@
         <div id="mypage">
             <h1>| 学生登録</h1>
             <p>登録する学生情報を入力してください。</p>
-            <form action="16KRchack.php" method="POST">
+            <form action="16SRchack.php" method="POST">
                 <table>
 
                     <tr>

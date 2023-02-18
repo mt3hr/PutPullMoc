@@ -18,7 +18,14 @@ if ($_SESSION['login'] ?? '' == 1) {
 
 }
 ?>
+<?php
+$dsn = 'mysql:dbname=shop;host=127.0.0.1';
+$user = 'root';
+$password = 'password';
 
+
+
+?>
 <body>
     <div class="login-page">
         <div class="form">

@@ -49,7 +49,7 @@
                         <th>最終編集日時</th>
                         <th></th>
                     </tr>';
-        $userID = $_POST['WMID']; // 小路へ。userIDにWMIDを代入してるけどミス？
+        $userID = $_POST['userID']; // 小路へ。userIDにWMIDを代入してるけどミス？
         $WMID = $_POST['WMID'];
         $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
         $user = '21jygr01';
@@ -58,9 +58,9 @@
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // 最終編集日時の属性を作成し、RegisterDatetimeから書き換える。
-        $sql = 'SELECT WMID,WMName,RegisterDatetime,VersionID FROM mockup WHERE WMID = ?;';
+        $sql = 'SELECT WMID,WMName,RegisterDatetime,VersionID FROM mockup WHERE WMID = ? AND UserID = ?;';
         $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-        $stmt->execute(array($WMID)); //SQL文を実行
+        $stmt->execute(array($WMID,$userID)); //SQL文を実行
         $count = $stmt->rowCount();
 
 

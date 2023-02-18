@@ -67,7 +67,7 @@
                 ?>
         </table>
         <button class="menubutton" type="button" onclick="history.back()">戻る</button>
-        <form action="22KRDataInsert.php">
+        <form action="19SRDataInsert.php">
             <?php
             print '<input type="hidden" name="userid" value="'.$_SESSION['regstuesrID'].'">
             <input type="hidden" name="surname" value="'.$_SESSION['regstSurname'].'">

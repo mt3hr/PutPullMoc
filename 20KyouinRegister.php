@@ -29,7 +29,10 @@
         <p>登録する教員情報を入力してください。</p>
         <form action="22KRchack.php" method="POST">
             <table>
-
+                <tr>
+                    <th>ID</th>
+                    <td><input class="text" size="25" type="text" name="userID" placeholder="姓"></td>
+                </tr>
                 <tr>
                     <th>氏名</th>
                     <td><input class="text" size="25" type="text" name="surname" placeholder="姓"></td>

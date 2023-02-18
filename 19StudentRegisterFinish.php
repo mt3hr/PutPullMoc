@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>新規生徒登録</title>
+    <title>新規教師登録</title>
     <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
     <header>
 
@@ -34,9 +34,11 @@
 
 <body>
     <div class="menu-page">
-        <h1>| 学生登録</h1>
-        <p>登録が完了しました。</p>
-        <form method="POST" action="16StudentRegister.php"><input class="menubutton" type="submit" value="もどる"></form>
+        <h1>| 教員登録</h1>
+        <p>登録が完了しました</p>
+        <form action="16StudentRegister.php">
+            <input class="menubutton" type="submit" value="戻る">
+        </form>
     </div>
 </body>
 

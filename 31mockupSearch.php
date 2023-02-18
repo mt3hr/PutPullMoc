@@ -49,7 +49,7 @@
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // 最終編集日時の属性を作成し、RegisterDatetimeから書き換える。
-        $sql = 'SELECT WMID,WMName,RegisterDatetime FROM mockup WHERE UserID = ? AND VersionID=1;';
+        $sql = 'SELECT UserID,WMID,WMName,RegisterDatetime FROM mockup WHERE UserID = ? AND VersionID=1;';
         $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
         $stmt->execute(array($userID)); //SQL文を実行
         $count = $stmt->rowCount();
@@ -60,6 +60,7 @@
 
             print '<tr>
                         <td><form method="POST" name="a_form" action="33mockupVerSearch.php">
+                        <input type="hidden" name="userID" value="' . $row['UserID'] . '">
                         <input type="hidden" name="WMID" value="' . $row['WMID'] . '">
                         <input type="hidden" name="WMName" value="' . $row['WMName'] . '">
                         <a href="#" onclick="document.a_form.submit();">' . $row['WMName'] . '</a>

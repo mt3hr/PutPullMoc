@@ -36,7 +36,9 @@
     <div class="menu-page">
         <h1>| 教員登録</h1>
         <p>登録が完了しました</p>
-        <button class="menubutton" type="button" onclick="history.back()">戻る</button>
+        <form action="20KyouinRegister.html">
+            <input class="menubutton" type="submit" value="戻る">
+        </form>
     </div>
 </body>
 
