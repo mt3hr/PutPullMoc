@@ -47,12 +47,13 @@
 
 <body>
     <div class="menu-page">
-        <h1>| 学生登録</h1>
+        <h1>| 生徒登録</h1>
         <div class="paper">
-            <p>登録が完了しました。</p>
+            <p>登録が完了しました</p>
         </div>
         <div class="button-area">
-            <form method="POST" action="16StudentRegister.php"><input class="menubutton" type="submit" value="戻る">
+            <form action="16StudentRegister.php">
+                <input class="menubutton" type="submit" value="戻る">
             </form>
         </div>
     </div>

@@ -71,7 +71,11 @@
             <p>登録が完了しました</p>
         </div>
         <div class="button-area">
-            <button class="menubutton" type="button" onclick="history.back()">戻る</button>
+            <!-- 小路とさいとうさんへ。buttonからinputに変更があったようなのでCSS再適用が必要かもしれないです。 -->
+            <!-- もともとあったコード→ <button class="menubutton" type="button" onclick="history.back()">戻る</button> -->
+            <form action="20KyouinRegister.html">
+                <input class="menubutton" type="submit" value="戻る">
+            </form>
         </div>
     </div>
 </body>

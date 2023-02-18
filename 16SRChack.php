@@ -3,6 +3,13 @@
 <?php
 session_start();
 $_errorCode = false;
+if ($_POST['userID'] ?? '' != null) {
+    $userID = htmlspecialchars($_POST['userID'], ENT_QUOTES);
+} else {
+    $_SESSION['errorMsg'] .= "姓、";
+    // print $_SESSION['errorMsg'];
+    $_errorCode = true;
+}
 if ($_POST['surname'] ?? '' != null) {
     $surname = htmlspecialchars($_POST['surname'], ENT_QUOTES);
 } else {
@@ -55,43 +62,57 @@ if ($_errorCode == ture) {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     session_start();
-    $email = htmlspecialchars($_POST['mail'], ENT_QUOTES);
-    $pass = htmlspecialchars($_POST['pass'], ENT_QUOTES);
-    $sql = "SELECT UserID FROM userTable WHERE Email = ? ";
+    $sql = "SELECT UserID FROM userTable WHERE UserID = ? ";
     $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-    $stmt->execute(array($email, $pass)); //SQL文を実行
+    $stmt->execute(array($userID)); //SQL文を実行
     $count = $stmt->rowCount();
+    if ($count != 0) {
+        print 'そのユーザIDは、既に登録されています。';
+        $uri = $_SERVER['HTTP_REFERER'];
+        header("Location: " . $uri);
+    } else {
+
+        $email = htmlspecialchars($_POST['mail'], ENT_QUOTES);
+        $pass = htmlspecialchars($_POST['pass'], ENT_QUOTES);
+        $sql = "SELECT UserID,E FROM userTable WHERE Email = ? ";
+        $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+        $stmt->execute(array($email, $pass)); //SQL文を実行
+        $count = $stmt->rowCount();
 
 
 
-    if (is_pass($pass)) {
-        if (is_mail($email)) {
-            while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-                if ($row['E-mail'] == $email) {
-                    $_SESSION['regstSurname'] = $surname;
-                    $_SESSION['regstName'] = $name;
-                    $_SESSION['regstMail'] = $Email;
-                    $_SESSION['regstPass'] = $pass;
+        if (is_pass($pass)) {
+            if (is_mail($email)) {
+                while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
+                    if ($count == 0) {
+                        $_SESSION['regstuserID'] = $userID;
+                        $_SESSION['regstSurname'] = $surname;
+                        $_SESSION['regstName'] = $name;
+                        $_SESSION['regstMail'] = $Email;
+                        $_SESSION['regstPass'] = $pass;
 
-                    $uri = './18StudentRegisterList.php';
-                    header("Location: " . $uri);
-                } else {
-                    print 'そのメールアドレスは、既に登録されています。';
+                        $uri = './18StudentRegister.php';
+                        header("Location: " . $uri);
+                    } else {
+                        print 'そのメールアドレスは、既に登録されています。';
+                        $uri = $_SERVER['HTTP_REFERER'];
+                        header("Location: " . $uri);
+                    }
                 }
+
+
+            } else {
+                $_SESSION['errorMsg'] += "メールアドレスの形式が、間違っています。";
+                // print $_SESSION['errorMsg'];
+                $uri = $_SERVER['HTTP_REFERER'];
+                header("Location: " . $uri);
             }
-
-
         } else {
-            $_SESSION['errorMsg'] += "メールアドレスの形式が、間違っています。";
+            $_SESSION['errorMsg'] += "パスワードの形式が間違っています。英数字8文字から50文字以内で入力してください。";
             // print $_SESSION['errorMsg'];
             $uri = $_SERVER['HTTP_REFERER'];
             header("Location: " . $uri);
         }
-    } else {
-        $_SESSION['errorMsg'] += "パスワードの形式が間違っています。英数字8文字から50文字以内で入力してください。";
-        // print $_SESSION['errorMsg'];
-        $uri = $_SERVER['HTTP_REFERER'];
-        header("Location: " . $uri);
     }
 }
 

@@ -53,41 +53,37 @@
             <form action="22KRchack.php" method="POST">
                 <table>
                     <tr>
-                        <td colspan="3">登録する教員情報を入力してください。</td>
+                        <th>ID</th>
+                        <td><input class="text" size="25" type="text" name="userID" placeholder="UserID"></td>
                     </tr>
                     <tr>
-                        <th>氏名：</th>
-                        <td class="name"><input class="text-name" size="25" type="text" name="surname" placeholder="姓"></td>
-                        <td class="name left"><input class="text-name" size="25" type="text" name="name" placeholder="名"></td>
+                        <th>氏名</th>
+                        <td class="name">
+                            <input class="text text-name" size="25" type="text" name="surname" placeholder="姓">
+                        </td>
+                        <td class="name left">
+                            <input class="text text-name" size="25" type="text" name="name" placeholder="名">
+                        </td>
                     </tr>
                     <tr>
-                        <th>メールアドレス：</th>
+                        <th>メールアドレス</th>
                         <td><input class="text" type="text" name="email" placeholder="メールアドレス"></td>
                     </tr>
                     <tr>
-                        <th>パスワード：</th>
+                        <th>パスワード</th>
                         <td><input class="text" type="password" name="pass" placeholder="パスワード"></td>
                     </tr>
                     <tr>
-                        <th></th>
+                        <th>パスワード再入力</th>
                         <td><input class="text" type="password" name="repass" placeholder="パスワード再入力"></td>
                     </tr>
 
-                </table>
+                    <div class="button-area">
+                        <button class="menubutton" type="button" onclick="history.back()">戻る</button>
+                        <input class="menubutton" type="submit" value="確認">
+                    </div>
+            </form>
         </div>
-        <?php
-        session_start();
-        $errorMsg = $_SESSION['errorMsg'] ?? '';
-        print "<p id='error'>" . $errorMsg . "</p>";
-        $_SESSION['errorMsg'] = null;
-        ?>
-
-        <div class="button-area">
-            <button class="menubutton" type="button" onclick="history.back()">戻る</button>
-            <input class="menubutton" type="submit" value="確認">
-        </div>
-        </form>
-    </div>
 </body>
 
 </html>
