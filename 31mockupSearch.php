@@ -51,8 +51,6 @@
         <h1>| 保存モックアップ一覧</h1>
 
         <?php
-        session_cache_limiter('none');
-        session_start();
         if ($_POST['userID'] ?? '' != null) {
             $userID = htmlspecialchars($_POST['userID'], ENT_QUOTES);
         } else {

@@ -13,14 +13,26 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $json = file_get_contents('php://input');
 $jsondata = json_decode($json, true);
 $wm_id = $jsondata["wm_id"];
-$version_id = $jsondata["version_id"]; //TODO バージョンはサーバでシーケンシャルな値を設定していくという話に落ち着いていたはず。
-$wm_name = $jsondata["wm_name"]; 
-$register_date_time = $jsondata["register_date_time"]; 
+$wm_name = $jsondata["wm_name"];
+$register_date_time = $jsondata["register_date_time"];
 $html_with_id = $jsondata["html_with_id"];
-$user_id = $userID;
 
-//TODO 保存処理
-$sql = 'INSERT INTO mockup(WMID, VersionID, WMName, RetisterDateTime, HTMLWithID, UserID) VALUES(?, ?, ?, ? ,? ,?, ?);';
+$user_id = $userID;
+$next_version_id = "1"; // バージョンはサーバでシーケンシャルな値を設定していくという話に落ち着いていたはず。
+$sql = "SELECT TOP 1 VersionID FROM mockup WHERE WMID = ? ORDER BY VersionID DESC;";
 $stmt = $pdo->prepare($sql);
-$stmt.execute($wm_id, $version_id, $wm_name, $register_date_time, $html_with_id, $user_id)
+$stmt->execute(array($wm_id));
+$count = $stmt->rowCount();
+if ($count != 0) {
+    while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
+        $next_version_id = ((int) $row["VersionID"]) + 1;
+    }
+} else {
+    $next_version_id = 1;
+}
+
+// 保存処理
+$sql = 'INSERT INTO mockup(WMID, VersionID, WMName, RegisterDatetime, HTMLWithID, UserID) VALUES(?, ?, ?, ? ,? ,?);';
+$stmt = $pdo->prepare($sql);
+$stmt->execute(array($wm_id, $next_version_id, $wm_name, $register_date_time, json_encode($html_with_id), $user_id));
 ?>
