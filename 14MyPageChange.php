@@ -14,6 +14,8 @@
         <a href="11MenuK.php"><img src="./img/ppm.png" alt="メニュー"></a>
     </div>
     <?php
+    session_cache_limiter('nocache');
+    session_start();
     if ($_SESSION['position'] == "t") {
         print '<nav><a href="11MenuK.php">メニュー</a>
             <a href="24studentSearch.php">学生一覧</a>
@@ -36,15 +38,14 @@
 
 <body>
     <div class="menu-page">
-        <h1>| マイページ</h1>
+        <h1>| 登録情報変更</h1>
         <div id="mypage">
             <form method="POST" action="/1login.php">
                 <table>
                     <?php
                     //TODOセッションログイン情報から自分のデータを持ってくる 
-                    session_cache_limiter('none');
-                    session_start();
-                    $userID = $_SESSION['userID'];
+                    
+                    $userID = $POST['userID'];
                     $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
                     $user = '21jygr01';
                     $password = '21jygr01';
@@ -61,7 +62,7 @@
                     while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
 
                         //hidden=userID text=lastname,firstname,email
-                        print '<form method="POST" action="/14MyPageChangeAct.php">
+                        print '<form method="POST" action="./14MyPageChangeAct.php">
                         <input type=”hidden” hidden name = "userID" value="' . $row['UserID'] . '">
                         <tr>
                         <th>氏名</th>

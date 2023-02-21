@@ -11,7 +11,7 @@
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     session_start();
-    $sql = "INSERT INTO userTable VALUES(?,?,?,?,?) ";
+    $sql = "INSERT INTO userTable VALUES(?,?,?,?,SHA2(?,0)) ";
     $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
     $stmt->execute(array($_POST["userID"],$_POST["email"],$_POST["surname"],$_POST["name"],$_POST["pass"])); //SQL文を実行
 

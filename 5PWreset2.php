@@ -12,7 +12,7 @@
         <div class="form">
             <h1>パスワードリセット</h1>
             <p>メールを送信しました。</p>
-            <p id="error">エラー</p>
+            
             <form method="POST" action="./index.php">
                 <input class="button" type="submit" name="submit" value="ログインへ">
             </form>

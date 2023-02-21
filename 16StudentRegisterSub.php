@@ -14,6 +14,7 @@
         <a href="11MenuK.php"><img src="./img/ppm.png" alt="メニュー"></a>
     </div>
     <?php
+    session_start();
     if ($_SESSION['position'] == "t") {
         print '<nav><a href="11MenuK.php">メニュー</a>
             <a href="24studentSearch.php">学生一覧</a>
@@ -41,10 +42,10 @@
             <p>登録する学生情報を入力してください。</p>
             <form action="16SRchack.php" method="POST">
                 <table>
-                <tr>
-                    <th>ID</th>
-                    <td><input class="text" size="25" type="text" name="userID" placeholder="UserID"></td>
-                </tr>
+                    <tr>
+                        <th>ID</th>
+                        <td><input class="text" size="25" type="text" name="userID" placeholder="UserID"></td>
+                    </tr>
 
                     <tr>
                         <th>氏名</th>
@@ -66,7 +67,7 @@
 
                 </table>
                 <?php
-                session_start();
+
                 $errorMsg = $_SESSION['errorMsg'] ?? '';
                 print "<p id='error'>" . $errorMsg . "</p>";
                 $_SESSION['errorMsg'] = null;

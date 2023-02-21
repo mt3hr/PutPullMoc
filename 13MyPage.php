@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>マイページ</title>
+    <title>登録情報</title>
     <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/mypage.css" rel="stylesheet" type="text/css" media="all">
     <header>
@@ -13,6 +13,8 @@
         <a href="11MenuK.php"><img src="./img/ppm.png" alt="メニュー"></a>
     </div>
     <?php
+    session_cache_limiter('nocache');
+    session_start();
     if ($_SESSION['position'] == "t") {
         print '<nav><a href="11MenuK.php">メニュー</a>
             <a href="24studentSearch.php">学生一覧</a>
@@ -34,14 +36,17 @@
 
 <body>
     <div class="menu-page">
-        <h1>| マイページ</h1>
+        <h1>| 登録情報</h1>
         <div id="mypage">
             <table>
                 <?php
                 //TODOセッションログイン情報から自分のデータを持ってくる
-                session_cache_limiter('none');
-                session_start();
-                $userID = $_SESSION['userID'];
+                
+                if ($_POST['userID'] ?? '' != null) {
+                    $userID = htmlspecialchars($_POST['userID'], ENT_QUOTES);
+                } else {
+                    $userID = $_SESSION['userID'];
+                }
                 $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
                 $user = '21jygr01';
                 $password = '21jygr01';
@@ -62,7 +67,10 @@
                         <th>氏名</th>
                         <td>' . $row['LastName'] . ' ' . $row['FirstName'] . '</td>
                         <td>
-                            <form method="POST" action="./14MyPageChange.php"><input class="mypagebutton" type="submit" value="編集"></form>
+                            <form method="POST" action="./14MyPageChange.php">
+                                <input class="mypagebutton" type="hidden" name="userId" value="' . $userID . '">
+                               <input class="mypagebutton" type="submit" value="編集">
+                            </form>
                         </td>
                         <td>
                         <input type=”hidden” hidden name = "userID"value="' . $row['UserID'] . '">

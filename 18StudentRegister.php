@@ -14,6 +14,7 @@
         <a href="11MenuK.php"><img src="./img/ppm.png" alt="メニュー"></a>
     </div>
     <?php
+    session_start();
     if ($_SESSION['position'] == "t") {
         print '<nav><a href="11MenuK.php">メニュー</a>
             <a href="24studentSearch.php">学生一覧</a>
@@ -40,11 +41,6 @@
         <p>以下の内容で登録してもよろしいですか。</p>
         <table>
             <?php
-            $_SESSION['regstuserID'] = $userID;
-            $_SESSION['regstSurname'] = $surname;
-            $_SESSION['regstName'] = $name;
-            $_SESSION['regstMail'] = $Email;
-            $_SESSION['regstPass'] = $pass;
             print "
             <tr>
                 <th>ユーザID</th>

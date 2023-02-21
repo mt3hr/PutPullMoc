@@ -44,6 +44,8 @@
                 <th>名</th>
                 <th>メールアドレス</th>
                 <th></th>
+                <th></th>
+                <th></th>
             </tr>
             <?php
 
@@ -70,6 +72,12 @@
                     <td>' . $row['LastName'] . '</td>
                     <td>' . $row['FirstName'] . '</td>
                     <td>' . $row['Email'] . '</td>
+                    <td>
+                        <form method="POST" action="./13MyPage.php">
+                            <input type="hidden" name="userID" value="' . $row['userID'] . '">
+                            <input class="mypagebutton" type="submit" value="情報編集">
+                        </form>
+                    </td>
                     <td>
                         <form method="POST" action="/31mockupSearch.html">
                             <input type="hidden" name="userID" value="' . $row['userID'] . '>"

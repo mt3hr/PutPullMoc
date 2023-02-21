@@ -40,7 +40,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 session_start();
 $email = htmlspecialchars($_POST['mail'], ENT_QUOTES);
 $pass = htmlspecialchars($_POST['pass'], ENT_QUOTES);
-$sql = "SELECT UserID,Email,PassWord FROM userTable WHERE Email = ? AND PassWord = ?";
+$sql = "SELECT UserID,Email,PassWord FROM userTable WHERE Email = ? AND PassWord = SHA2(?,0)";
 $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
 $stmt->execute(array($email, $pass)); //SQL文を実行
 $count = $stmt->rowCount();

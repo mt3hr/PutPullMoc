@@ -49,7 +49,7 @@ if ($_POST['repass'] ?? '' != null) {
     $_errorCode = true;
 }
 
-if ($_errorCode == ture) {
+if ($_errorCode == true) {
     $_SESSION['errorMsg'] .= "が入力されていません";
 
     $uri = $_SERVER['HTTP_REFERER'];
@@ -81,7 +81,7 @@ if ($_errorCode == ture) {
 
 
 
-        if (is_pass($pass)) {
+        if (is_password($pass)) {
             if (is_mail($email)) {
                 while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
                     if ($count==0) {

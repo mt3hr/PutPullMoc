@@ -50,6 +50,10 @@ if (is_mail($email)) {
     $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
     $stmt->execute(array($lastname, $firstname, $email)); //SQL文を実行
 
+    $_SESSION['errorMsg'] = "メールアドレスの形になっていません";
+    $uri = "./13MyPage.php";
+    header("Location: " . $uri);
+
 
 } else {
 

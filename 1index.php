@@ -42,11 +42,9 @@ $password = 'password';
                 </p>
                 <input class="text" type="text" name="mail" placeholder="メールアドレス" />
                 <input class="text" type="password" name="pass" placeholder="パスワード" />
-                <input class="button" type="submit" name="submit" value="教員ログイン">
+                <input class="button" type="submit" name="submit" value="ログイン">
             </form>
-            <form method="POST" action="./12MenuS.php">
-                <input class="button" type="submit" name="submit" value="学生ログイン">
-            </form>
+            
             <a href="./3PWreset.php">パスワードを忘れた場合</a>
         </div>
     </div>

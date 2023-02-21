@@ -60,11 +60,12 @@
 
             print '<tr>
                         <td><form method="POST" name="a_form" action="33mockupVerSearch.php">
-                        <input type="hidden" name="userID" value="' . $row['UserID'] . '">
-                        <input type="hidden" name="WMID" value="' . $row['WMID'] . '">
-                        <input type="hidden" name="WMName" value="' . $row['WMName'] . '">
-                        <a href="#" onclick="document.a_form.submit();">' . $row['WMName'] . '</a>
-                    </form>
+                            <input type="hidden" name="userID" value="' . $row['UserID'] . '">
+                            <input type="hidden" name="WMID" value="' . $row['WMID'] . '">
+                            <input type="hidden" name="WMName" value="' . $row['WMName'] . '">
+                            <a href="#" onclick="document.a_form.submit();">' . $row['WMName'] . '</a>
+                            </form>
+                        </td>
                     <td>' . $row['RegisterDatetime'] . '</td>
                     
                     </tr>';
