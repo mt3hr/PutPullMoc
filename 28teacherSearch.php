@@ -13,6 +13,8 @@
         <a href="11MenuK.php"><img src="./img/ppm.png" alt="メニュー"></a>
     </div>
     <?php
+    session_cache_limiter('none');
+            session_start();
     if ($_SESSION['position'] == "t") {
         print '<nav><a href="11MenuK.php">メニュー</a>
             <a href="24studentSearch.php">学生一覧</a>
@@ -49,8 +51,7 @@
             </tr>
             <?php
 
-            session_cache_limiter('none');
-            session_start();
+            
             $userID = $_SESSION['userID'];
             $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
             $user = '21jygr01';
@@ -59,7 +60,7 @@
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-            $sql = 'SELECT UserID,Email,LastName,FirstName FROM userTable INNER JOIN teacher ON userTable.UserID = teacher.UserID;';
+            $sql = 'SELECT userTable.UserID,Email,LastName,FirstName FROM userTable INNER JOIN teacher ON userTable.UserID = teacher.UserID;';
             $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
             $stmt->execute(array($userID)); //SQL文を実行
             $count = $stmt->rowCount();
