@@ -9,6 +9,7 @@
     </header>
     <a href="11MenuK.html"><img src="./img/PutPullMoc.png" alt="メニュー"></a>
     <?php
+    session_start();
     if ($_SESSION['position'] == "t") {
         print '<nav><a href="11MenuK.php">メニュー</a>
             <a href="24studentSearch.php">学生一覧</a>

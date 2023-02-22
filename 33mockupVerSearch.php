@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>教員一覧</title>
+    <title>モックアップバージョン一覧</title>
     <link href="css/login.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
     <header>
@@ -38,7 +38,7 @@
 
 <body>
     <div class="menu-page">
-        <h1>| 保存モックアップ一覧</h1>
+        <h1>| 保存モックアップバージョン一覧</h1>
 
         <?php
 
@@ -60,21 +60,26 @@
         // 最終編集日時の属性を作成し、RegisterDatetimeから書き換える。
         $sql = 'SELECT WMID,WMName,RegisterDatetime,VersionID FROM mockup WHERE WMID = ? AND UserID = ?;';
         $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-        $stmt->execute(array($WMID,$userID)); //SQL文を実行
+        $stmt->execute(array($WMID, $userID)); //SQL文を実行
         $count = $stmt->rowCount();
 
-
-        while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-            /* 小路へ。/にアクセスするように変更しました。
-            print '<tr>
-            <td><a href="33mockupVerSearch.ph?WMID="'.$row['WMID'].'"&WMName="'.$row['WMName'].'" >'.$row['WMName'].'</a></td>
-            <td>'.$row['RegisterDatetime'].'</td>
-            </tr>';
-            */
-            print '<tr>
+        if ($count != 0) {
+            while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
+                
+                print '<tr>
                     <td><a href="/?wm_id=' . $row["WMID"] . '&version_id=' . $row["VersionID"] . '">' . $row["WMName"] . '</a></td>
-                    <td>' . $row['RegisterDatetime'] . '</td>
+                    <td>' . $row["VersionID"] . '</td>
+                    <td><form method="POST" name="a_form" action="33MockupDelete.php">
+                            <input type="hidden" name="userID" value="' . $row['UserID'] . '">
+                            <input type="hidden" name="WMID" value="' . $row['WMID'] . '">
+                            <input type="hidden" name="VersionID" value="' . $row['VersionID'] . '">
+                            <a href="#" onclick="document.a_form.submit();">削除</a>
+                            </form>
+                        </td>
                     </tr>';
+            }
+        } else {
+            print "<p id='error'>検索結果０件</p>";
         }
 
 
