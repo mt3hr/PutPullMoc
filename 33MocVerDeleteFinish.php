@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>新規教師登録</title>
+    <title>モックアップバージョン削除</title>
     <header>
 
     </header>
@@ -30,9 +30,14 @@
 </head>
 
 <body>
-    <h2>教員登録</h2>
+    <h2>モックアップバージョン削除</h2>
     <p>削除しました。</p>
-    <form action="28teacherSearch.php">
+    <form action="33mockupVerSearch.php">
+    <?php
+        session_start();
+        $userID = $_SESSION['mocUserID'];
+        print '<input type="hidden" name="userId" value="'.$userID.'">';
+        ?>
         <input type="submit" value="戻る">
     </form>
 </body>

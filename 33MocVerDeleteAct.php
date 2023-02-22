@@ -2,7 +2,9 @@
 //TODOセッションログイン情報から自分のデータを持ってくる
 session_cache_limiter('none');
 session_start();
-$userID = $_SESSION['userID'];
+$userID = $_POST['userID'];
+$WMID = $_POST['WMID'];
+$VersionID = $_POST['VersionID'];
 $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
 $user = '21jygr01';
 $password = '21jygr01';
@@ -10,19 +12,16 @@ $pdo = new PDO($dsn, $user, $password);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-$sql = '
-        DELETE FROM teacher WHERE UserID = ?;';
-$stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-$stmt->execute(array($userID)); //SQL文を実行
+
 
 $sql = '
-        DELETE FROM userTable WHERE UserID = ?;';
+        DELETE FROM mockup WHERE UserID = ?,WMID=?,VersionID=?;';
 $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-$stmt->execute(array($userID)); //SQL文を実行
+$stmt->execute(array($userID,$WMID,$VersionID)); //SQL文を実行
 
 
 
-
-$uri = './30teacherSearchDeleteFinish.php';
+$_SESSION['mocUserID'] = $userID;
+$uri = './33MocVerDeleteFinish.php';
 header("Location: " . $uri);
 ?>

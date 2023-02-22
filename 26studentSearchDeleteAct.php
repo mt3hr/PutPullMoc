@@ -2,7 +2,7 @@
 //TODOセッションログイン情報から自分のデータを持ってくる
 session_cache_limiter('none');
 session_start();
-$userID = $_SESSION['userID'];
+$userID = $_POST['userID'];
 $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
 $user = '21jygr01';
 $password = '21jygr01';
