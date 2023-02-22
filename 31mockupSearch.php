@@ -35,7 +35,8 @@
         } else {
             $userID = $_SESSION['userID'];
         }
-        print '<p>' . $_POST['userName'] . 'さんのワークスペース</p>
+        //UserNameを取ってくる
+        print '<p>' . $userID . 'さんのワークスペース</p>
                 <table>
                     <tr>
                         <th>モックアップ名</th>
@@ -54,7 +55,7 @@
         $stmt->execute(array($userID)); //SQL文を実行
         $count = $stmt->rowCount();
 
-
+        //アラートで削除するか確認取りたい
         while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
 
 
@@ -67,7 +68,13 @@
                             </form>
                         </td>
                     <td>' . $row['RegisterDatetime'] . '</td>
-                    
+                    <td><form method="POST" name="a_form" action="31MockupDeleteAct.php">
+                            <input type="hidden" name="userID" value="' . $row['UserID'] . '">
+                            <input type="hidden" name="WMID" value="' . $row['WMID'] . '">
+                            <input type="hidden" name="WMName" value="' . $row['WMName'] . '">
+                            <a href="#" onclick="document.a_form.submit();">削除</a>
+                            </form>
+                        </td>
                     </tr>';
         }
 
