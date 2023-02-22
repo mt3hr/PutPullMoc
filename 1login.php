@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>ログイン</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
     <link href="css/login.css" rel="stylesheet" type="text/css" media="all">
 </head>
 
@@ -21,7 +23,8 @@ if ($_SESSION['login'] ?? '' == 1) {
 <body>
     <div class="login-page">
         <div class="form">
-            <h1>ログイン</h1>
+            <h1>PutPullMock</h1>
+            <h2>ログイン</h2>
             <!-- <form method="POST" action="/1logincheck.php"> -->
             <form method="POST" action="./1logincheck.php">
                 <p id="error">
@@ -34,10 +37,7 @@ if ($_SESSION['login'] ?? '' == 1) {
                 </p>
                 <input class="text" type="text" name="mail" placeholder="メールアドレス" />
                 <input class="text" type="password" name="pass" placeholder="パスワード" />
-                <input class="button" type="submit" name="submit" value="教員ログイン">
-            </form>
-            <form method="POST" action="./12MenuS.php">
-                <input class="button" type="submit" name="submit" value="学生ログイン">
+                <input class="button" type="submit" name="submit" value="ログイン">
             </form>
             <a href="./3PWreset.php">パスワードを忘れた場合</a>
         </div>

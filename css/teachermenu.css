@@ -1,0 +1,62 @@
+.menu-page {
+    width: 1000px;
+    padding: 8% 0 0;
+    margin: auto;
+    position: relative;
+    justify-content: center;
+}
+
+.menulist {
+    display: flex;
+    width: 633px;
+    height: 225px;
+}
+
+.menulist-right {
+    display: flex;
+    width: 1000px;
+    height: 225px;
+}
+
+.menuitem {
+    background-color: steelblue;
+    width: 500px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.menuitem-right {
+    margin-left: 50px;
+    background-color: steelblue;
+    width: 500px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.icon {
+    text-align: center;
+}
+
+img {
+    width: 100px;
+    padding-top: 10px;
+}
+.menubutton{
+    text-align: center;
+    width: 310px;
+    background-color: steelblue;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    border: solid 1px steelblue;
+}
+h1 {
+    font-family: "Roboto", sans-serif;
+    font-size: 30px;
+    color: steelblue;
+}
+p{
+    text-align: center;
+}

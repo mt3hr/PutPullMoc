@@ -66,11 +66,11 @@ if ($_errorCode == ture) {
     $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
     $stmt->execute(array($userID)); //SQL文を実行
     $count = $stmt->rowCount();
-    if($count!=0){
+    if ($count != 0) {
         print 'そのユーザIDは、既に登録されています。';
         $uri = $_SERVER['HTTP_REFERER'];
         header("Location: " . $uri);
-    }else{
+    } else {
 
         $email = htmlspecialchars($_POST['mail'], ENT_QUOTES);
         $pass = htmlspecialchars($_POST['pass'], ENT_QUOTES);
@@ -84,7 +84,7 @@ if ($_errorCode == ture) {
         if (is_pass($pass)) {
             if (is_mail($email)) {
                 while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-                    if ($count==0) {
+                    if ($count == 0) {
                         $_SESSION['regstuserID'] = $userID;
                         $_SESSION['regstSurname'] = $surname;
                         $_SESSION['regstName'] = $name;
@@ -113,7 +113,7 @@ if ($_errorCode == ture) {
             $uri = $_SERVER['HTTP_REFERER'];
             header("Location: " . $uri);
         }
-        }
+    }
 }
 
 

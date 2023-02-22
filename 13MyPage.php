@@ -3,35 +3,47 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>登録情報</title>
-    <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
+    <title>マイページ</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
+    <link href="css/glovalnavigation.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/mypage.css" rel="stylesheet" type="text/css" media="all">
-    <header>
-
+    <!-- <link href="css/menu.css" rel="stylesheet" type="text/css" media="all"> -->
+    <header class="header">
+        <div class="header-inner">
+            <?php
+            session_start();
+            if ($_SESSION['position'] == "t") {
+                print
+                    '<h1 class="header-logo">
+                        <a href="11MenuK.php">PutPullMock</a>
+                    </h1>
+                    <nav class="header-nav">
+                        <ul class="header-navList">
+                            <li class="header-navListItem"><a id="current" href="11MenuK.php">メニュー</a></li>
+                            <li class="header-navListItem"><a href="24studentSearch.php"">学生一覧</a></li>
+                            <li class="header-navListItem"><a href="1MenuK.php">保存一覧</a></li>
+                            <li class="header-navListItem"><a href="11MenuK.php">新規作成</a></li>
+                            <li class="header-navListItem"><a href="10logout.php">ログアウト</a></li>
+                        </ul>
+                    </nav>';
+            } else {
+                print
+                    '<h1 class="header-logo">
+                        <a href="11MenuS.php">PutPullMock</a>
+                    </h1>
+                    <nav class="header-nav">
+                        <ul class="header-navList">
+                            <li class="header-navListItem"><a id="current" href="11MenuS.php">メニュー</a></li>
+                            <li class="header-navListItem"><a href="1MenuK.php">保存一覧</a></li>
+                            <li class="header-navListItem"><a href="11MenuK.php">新規作成</a></li>
+                            <li class="header-navListItem"><a href="10logout.php">ログアウト</a></li>
+                        </ul>
+                    </nav>';
+            }
+            ?>
+        </div>
     </header>
-    <div class="logo">
-        <a href="11MenuK.php"><img src="./img/ppm.png" alt="メニュー"></a>
-    </div>
-    <?php
-    session_cache_limiter('nocache');
-    session_start();
-    if ($_SESSION['position'] == "t") {
-        print '<nav><a href="11MenuK.php">メニュー</a>
-            <a href="24studentSearch.php">学生一覧</a>
-            <a href="11MenuK.php">保存一覧</a>
-            <a href="11MenuK.php">新規作成</a>
-            <a href="10logout.php">ログアウト</a>
-            <div class="animation start-home"></div>
-            </nav>';
-    } else {
-        print '<nav><a href="11MenuK.php">メニュー</a>
-            <a href="11MenuK.php">保存一覧</a>
-            <a href="11MenuK.php">新規作成</a>
-            <a href="10logout.php">ログアウト</a>
-            <div class="animation start-home"></div>
-            </nav>';
-    }
-    ?>
 </head>
 
 <body>
@@ -87,7 +99,9 @@
                 ?>
             </table>
         </div>
-        <button class="menubutton" type="button" onclick="history.back()">戻る</button>
+        <div class="button-area">
+            <button class="mypagebutton" type="button" onclick="history.back()">戻る</button>
+        </div>
     </div>
 </body>
 

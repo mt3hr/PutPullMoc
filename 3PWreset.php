@@ -4,14 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>パスワードリセット</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
     <link href="css/login.css" rel="stylesheet" type="text/css" media="all">
 </head>
 
 <body>
     <div class="login-page">
         <div class="form">
-            <h1>パスワードリセット</h1>
-            <p>登録されているのメールアドレスを入力してください。</p>
+            <h1>PutPullMock</h1>
+            <h2>パスワードリセット</h2>
+            <p>登録済のメールアドレスを入力してください。</p>
             <p id="error">
                 <?php
                 session_start();

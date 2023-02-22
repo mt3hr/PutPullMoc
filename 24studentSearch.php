@@ -15,38 +15,58 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 <head>
     <meta charset="UTF-8">
-    <title>学生検索</title>
-    <link href="css/login.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
-    <header>
-
+    <title>学生一覧</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
+    <link href="css/studentsearch.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/glovalnavigation.css" rel="stylesheet" type="text/css" media="all">
+    <header class="header">
+        <div class="header-inner">
+            <?php
+            if ($_SESSION['position'] == "t") {
+                print
+                    '<h1 class="header-logo">
+                        <a href="11MenuK.php">PutPullMock</a>
+                    </h1>
+                    <nav class="header-nav">
+                        <ul class="header-navList">
+                            <li class="header-navListItem"><a id="current" href="11MenuK.php">メニュー</a></li>
+                            <li class="header-navListItem"><a href="24studentSearch.php"">学生一覧</a></li>
+                            <li class="header-navListItem"><a href="1MenuK.php">保存一覧</a></li>
+                            <li class="header-navListItem"><a href="11MenuK.php">新規作成</a></li>
+                            <li class="header-navListItem"><a href="10logout.php">ログアウト</a></li>
+                        </ul>
+                    </nav>';
+            } else {
+                print
+                    '<h1 class="header-logo">
+                        <a href="11MenuS.php">PutPullMock</a>
+                    </h1>
+                    <nav class="header-nav">
+                        <ul class="header-navList">
+                            <li class="header-navListItem"><a id="current" href="11MenuS.php">メニュー</a></li>
+                            <li class="header-navListItem"><a href="1MenuK.php">保存一覧</a></li>
+                            <li class="header-navListItem"><a href="11MenuK.php">新規作成</a></li>
+                            <li class="header-navListItem"><a href="10logout.php">ログアウト</a></li>
+                        </ul>
+                    </nav>';
+            }
+            ?>
+        </div>
     </header>
-    <div class="logo">
-        <a href="11MenuK.php"><img src="./img/ppm.png" alt="メニュー"></a>
-    </div>
-    <nav>
-        <a href="11MenuK.php">メニュー</a>
-        <a href="24studentSearch.php">学生一覧</a>
-        <a href="31mockupSearch.php">保存一覧</a>
-        <a href="/">新規作成</a>
-        <a href="10logout.php">ログアウト</a>
-        <div class="animation start-home"></div>
-    </nav>
 </head>
 
 <body>
     <div class="menu-page">
         <h1>| 学生検索</h1>
-        <p>検索する学生情報を入力してください。</p>
-
-
+        <div class="search-option">
+        <p class="paperpad">検索する学生情報を入力してください。</p>
         <ul>
-
             <form action="24KyouinRegister.php">
                 <li>
                     <p>名前で検索
                     </p>
-                    <input class="text" type="text" value="氏名"><input type="submit" class="menubutton" value="検索">
+                    <input class="text" type="text" value="氏名"><input class="searchbutton" type="submit" class="menubutton" value="検索">
                 </li>
             </form>
             <form action="24KyouinRegister.php">
@@ -55,6 +75,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 </li>
             </form>
         </ul>
+        </div>
         <table>
             <tr>
                 <th>学籍番号</th>
@@ -87,13 +108,13 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     <td>
                         <form method="POST" action="./31mockupSearch.php">
                             <input type="hidden" name="userID" value="' . $row['userID'] . '">
-                            <input class="mypagebutton" type="submit" value="課題確認">
+                            <input class="menubutton" type="submit" value="課題確認">
                         </form>
                     </td>
                     <td>
                      <form method="POST" action="./26studentSearchDelete.php">
-                        <input type="hidden" name="userID" value="' . $row['UserID'] . '">
-                        <input class="mypagebutton" type="submit" value="削除">
+                        <input class="menubutton" type="hidden" name="userID" value="' . $row['UserID'] . '">
+                        <input class="menubutton" type="submit" value="削除">
                     </form>
                      </td>
                     </tr>';

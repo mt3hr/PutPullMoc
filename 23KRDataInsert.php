@@ -1,14 +1,14 @@
 <!-- TODO 入力内容チェックをする -->
 
 <?php
-    session_start();
+session_start();
 
 
-    $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
-    $user = '21jygr01';
-    $password = '21jygr01';
-    $pdo = new PDO($dsn, $user, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
+$user = '21jygr01';
+$password = '21jygr01';
+$pdo = new PDO($dsn, $user, $password);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     session_start();
     $sql = "INSERT INTO userTable VALUES(?,?,?,?,SHA2(?,0)) ";
@@ -17,7 +17,7 @@
 
 
 
-    $uri = './23KyouinRegisterFinish.php';
-    header("Location: " . $uri);
-                
+$uri = './23KyouinRegisterFinish.php';
+header("Location: " . $uri);
+
 ?>

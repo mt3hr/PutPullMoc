@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>モックアップ一覧</title>
+    <title>教員一覧</title>
     <link href="css/login.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
     <header>
@@ -12,26 +12,14 @@
     <div class="logo">
         <a href="11MenuK.php"><img src="./img/ppm.png" alt="メニュー"></a>
     </div>
-    <?php
-    session_start();
-    if ($_SESSION['position'] == "t") {
-        print '<nav><a href="11MenuK.php">メニュー</a>
-            <a href="24studentSearch.php">学生一覧</a>
-            <a href="11MenuK.php">保存一覧</a>
-            <a href="11MenuK.php">新規作成</a>
-            <a href="10logout.php">ログアウト</a>
-            <div class="animation start-home"></div>
-            </nav>';
-    } else {
-        print '<nav><a href="11MenuK.php">メニュー</a>
-            <a href="11MenuK.php">保存一覧</a>
-            <a href="11MenuK.php">新規作成</a>
-            <a href="10logout.php">ログアウト</a>
-            <div class="animation start-home"></div>
-            </nav>';
-    }
-
-    ?>
+    <nav>
+        <a href="11MenuK.php">メニュー</a>
+        <a href="24studentSearch.php">学生一覧</a>
+        <a href="31mockupSearch.php">保存一覧</a>
+        <a href="/">新規作成</a>
+        <a href="10logout.php">ログアウト</a>
+        <div class="animation start-home"></div>
+    </nav>
 </head>
 <!-- post ユーザーネーム、ユーザーID  -->
 
@@ -40,8 +28,6 @@
         <h1>| 保存モックアップ一覧</h1>
 
         <?php
-        session_cache_limiter('none');
-        session_start();
         if ($_POST['userID'] ?? '' != null) {
             $userID = htmlspecialchars($_POST['userID'], ENT_QUOTES);
         } else {

@@ -45,12 +45,12 @@
             <tr>
                 <th>ユーザID</th>
                 
-                <td>" .$_SESSION['regstuserID']. "</td>
+                <td>" . $_SESSION['regstuserID'] . "</td>
             </tr>
             <tr>
                 <th>氏名</th>
                 <td>" . $_SESSION['regstSurname'] . "</td>
-                <td>" .  $_SESSION['regstName'] . "</td>
+                <td>" . $_SESSION['regstName'] . "</td>
             </tr>
             <tr>
                 <th>メールアドレス</th>
@@ -65,13 +65,13 @@
         <button class="menubutton" type="button" onclick="history.back()">戻る</button>
         <form action="19SRDataInsert.php">
             <?php
-            print '<input type="hidden" name="userid" value="'.$_SESSION['regstuesrID'].'">
-            <input type="hidden" name="surname" value="'.$_SESSION['regstSurname'].'">
-            <input type="hidden" name="name" value="'.$_SESSION['regstName'].'">
-            <input type="hidden" name="email" value="'.$_POST['regstEmail'].'">
-            <input type="hidden" name="pass" value="'.$_POST['regstPass'].'">
+            print '<input type="hidden" name="userid" value="' . $_SESSION['regstuesrID'] . '">
+            <input type="hidden" name="surname" value="' . $_SESSION['regstSurname'] . '">
+            <input type="hidden" name="name" value="' . $_SESSION['regstName'] . '">
+            <input type="hidden" name="email" value="' . $_POST['regstEmail'] . '">
+            <input type="hidden" name="pass" value="' . $_POST['regstPass'] . '">
             '
-            ?>
+                ?>
             <input class="menubutton" type="submit" value="確認">
         </form>
     </div>
