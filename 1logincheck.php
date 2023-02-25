@@ -66,12 +66,14 @@ $count = $stmt->rowCount();
         $count = $stmt->rowCount();
         if ($count == 0) {
             $_SESSION['position'] = "t";
+            $uri = './11MenuK.php';
+            header("Location: " . $uri);
         } else {
             $_SESSION['position'] = "s";
+            $uri = './12MenuS.php';
+        header("Location: " . $uri);
         }
         
-        $uri = './11MenuK.php';
-        header("Location: " . $uri);
     }
 
 // 
