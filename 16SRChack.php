@@ -61,17 +61,17 @@ if ($_errorCode == true) {
     $pdo = new PDO($dsn, $user, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    
+
     $sql = "SELECT UserID FROM userTable WHERE UserID = ? ";
     $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
     $stmt->execute(array($userID)); //SQL文を実行
     $count = $stmt->rowCount();
     if ($count != 0) {
-        $_SESSION['errorMsg'] == 'そのユーザIDは、既に登録されています。'.$count;
+        $_SESSION['errorMsg'] == 'そのユーザIDは、既に登録されています。' . $count;
         $uri = $_SERVER['HTTP_REFERER'];
         header("Location: " . $uri);
     } else {
-        
+
         $sql = "SELECT UserID,Email FROM userTable WHERE Email = ? ";
         $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
         $stmt->execute(array($Email, $pass)); //SQL文を実行
@@ -81,14 +81,13 @@ if ($_errorCode == true) {
 
         if (is_password($pass)) {
             if (is_mail($Email)) {
-                $_SESSION['errorMsg'] .= 'ここまでおｋ';
                 if ($count == 0) {
                     $_SESSION['regstEmail'] = $Email;
                     $_SESSION['regstPass'] = $pass;
-                    $_SESSION['regstuesrID'] = $userID;
+                    $_SESSION['regstuserID'] = $userID;
                     $_SESSION['regstSurname'] = $surname;
                     $_SESSION['regstName'] = $name;
-                    
+
 
                     $uri = './18StudentRegister.php';
                     header("Location: " . $uri);
@@ -97,7 +96,7 @@ if ($_errorCode == true) {
                     $uri = $_SERVER['HTTP_REFERER'];
                     header("Location: " . $uri);
                 }
-                
+
 
 
             } else {

@@ -15,13 +15,16 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 <head>
     <meta charset="UTF-8">
-    <title>学生一覧</title>
+    <title>メニュー</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
-    <link href="css/studentsearch.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/glovalnavigation.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/teachermenu.css" rel="stylesheet" type="text/css" media="all">
     <header class="header">
         <div class="header-inner">
+
+            <!-- TODO ログイン時にuserの役職(学生、教師)をsessionに登録する。そこからメニュー分岐 -->
+            <!-- 保存一覧は情報を渡さないか、自分を渡すかして、表示できるようにする -->
             <?php
             if ($_SESSION['position'] == "t") {
                 print
@@ -32,7 +35,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         <ul class="header-navList">
                             <li class="header-navListItem"><a id="current" href="11MenuK.php">メニュー</a></li>
                             <li class="header-navListItem"><a href="24studentSearch.php"">学生一覧</a></li>
-                            <li class="header-navListItem"><a href="1MenuK.php">保存一覧</a></li>
+                            <li class="header-navListItem"><a href="31mockupSearch.php">保存一覧</a></li>
                             <li class="header-navListItem"><a href="11MenuK.php">新規作成</a></li>
                             <li class="header-navListItem"><a href="10logout.php">ログアウト</a></li>
                         </ul>
@@ -40,12 +43,12 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } else {
                 print
                     '<h1 class="header-logo">
-                        <a href="11MenuS.php">PutPullMock</a>
+                        <a href="12MenuS.php">PutPullMock</a>
                     </h1>
                     <nav class="header-nav">
                         <ul class="header-navList">
-                            <li class="header-navListItem"><a id="current" href="11MenuS.php">メニュー</a></li>
-                            <li class="header-navListItem"><a href="1MenuK.php">保存一覧</a></li>
+                            <li class="header-navListItem"><a id="current" href="12MenuS.php">メニュー</a></li>
+                            <li class="header-navListItem"><a href="31mockupSearch.php">保存一覧</a></li>
                             <li class="header-navListItem"><a href="11MenuK.php">新規作成</a></li>
                             <li class="header-navListItem"><a href="10logout.php">ログアウト</a></li>
                         </ul>

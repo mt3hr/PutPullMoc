@@ -24,7 +24,7 @@
                         <ul class="header-navList">
                             <li class="header-navListItem"><a id="current" href="11MenuK.php">メニュー</a></li>
                             <li class="header-navListItem"><a href="24studentSearch.php"">学生一覧</a></li>
-                            <li class="header-navListItem"><a href="1MenuK.php">保存一覧</a></li>
+                            <li class="header-navListItem"><a href="31mockupSearch.php">保存一覧</a></li>
                             <li class="header-navListItem"><a href="11MenuK.php">新規作成</a></li>
                             <li class="header-navListItem"><a href="10logout.php">ログアウト</a></li>
                         </ul>
@@ -36,8 +36,8 @@
                     </h1>
                     <nav class="header-nav">
                         <ul class="header-navList">
-                            <li class="header-navListItem"><a id="current" href="11MenuS.php">メニュー</a></li>
-                            <li class="header-navListItem"><a href="1MenuK.php">保存一覧</a></li>
+                            <li class="header-navListItem"><a id="current" href="12MenuS.php">メニュー</a></li>
+                            <li class="header-navListItem"><a href="31mockupSearch.php">保存一覧</a></li>
                             <li class="header-navListItem"><a href="11MenuK.php">新規作成</a></li>
                             <li class="header-navListItem"><a href="10logout.php">ログアウト</a></li>
                         </ul>
