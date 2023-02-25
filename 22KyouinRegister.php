@@ -70,11 +70,6 @@
         <p>以下の内容で登録してもよろしいですか。</p>
         <table>
             <?php
-            $_SESSION['regstuserID'] = $userID;
-            $_SESSION['regstSurname'] = $surname;
-            $_SESSION['regstName'] = $name;
-            $_SESSION['regstMail'] = $Email;
-            $_SESSION['regstPass'] = $pass;
             print "
             <tr>
                 <th>ユーザID</th>
@@ -88,7 +83,7 @@
             </tr>
             <tr>
                 <th>メールアドレス</th>
-                <td>" . $_SESSION['regstMail'] . "</td>
+                <td>" . $_SESSION['regstEmail'] . "</td>
             </tr>
             <tr>
                 <th>パスワード</th>
@@ -99,19 +94,21 @@
         <div class="button-area">
             <!-- 小路とさいとうさんへ。buttonからinputに変更があったようなのでCSS再適用が必要かもしれないです。 -->
             <!-- もともとあったコード→ <button class="menubutton" type="button" onclick="history.back()">戻る</button> -->
-            <button class="menubutton" type="button" onclick="history.back()">戻る</button>
+            
 
-            <form action="22KRDataInsert.php">
+            <form action="23KRDataInsert.php" method ="POST">
+                <button class="menubutton" type="button" onclick="history.back()">戻る</button>
                 <?php
-                print '<input type="hidden" name="userid" value="' . $_SESSION['regstuesrID'] . '">
-            <input type="hidden" name="surname" value="' . $_SESSION['regstSurname'] . '">
-            <input type="hidden" name="name" value="' . $_SESSION['regstName'] . '">
-            <input type="hidden" name="email" value="' . $_POST['regstEmail'] . '">
-            <input type="hidden" name="pass" value="' . $_POST['regstPass'] . '">
-            '
+                print '<input type="hidden" name="userid" value="' . $_SESSION['regstuserID'] . '">
+                    <input type="hidden" name="surname" value="' . $_SESSION['regstSurname'] . '">
+                    <input type="hidden" name="name" value="' . $_SESSION['regstName'] . '">
+                    <input type="hidden" name="email" value="' . $_SESSION['regstEmail'] . '">
+                    <input type="hidden" name="pass" value="' . $_SESSION['regstPass'] . '">
+                    <input class="menubutton" type="submit" value="確認">
+                    '
                     ?>
 
-                <input class="menubutton" type="submit" value="確認">
+                
             </form>
         </div>
 </body>

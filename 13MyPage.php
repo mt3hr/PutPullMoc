@@ -12,7 +12,9 @@
     <header class="header">
         <div class="header-inner">
             <?php
+            session_cache_limiter('none');
             session_start();
+            
             if ($_SESSION['position'] == "t") {
                 print
                     '<h1 class="header-logo">
@@ -57,7 +59,16 @@
                 if ($_POST['userID'] ?? '' != null) {
                     $userID = htmlspecialchars($_POST['userID'], ENT_QUOTES);
                 } else {
-                    $userID = $_SESSION['userID'];
+                    if ($_SESSION['MPuserID'] ?? '' != null) {
+                        $userID = htmlspecialchars($_SESSION['MPuserID'], ENT_QUOTES);
+                        $_SESSION['MPuserID'] = null;
+                    } else {
+                        $userID = $_SESSION['userID'];
+                    }
+                }
+                if ($_SESSION['message'] ?? '' != null) {
+                    print '<p>'.$_SESSION['message'].'</p>';
+                    $_SESSION['message'] = null;
                 }
                 $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
                 $user = '21jygr01';
@@ -80,7 +91,7 @@
                         <td>' . $row['LastName'] . ' ' . $row['FirstName'] . '</td>
                         <td>
                             <form method="POST" action="./14MyPageChange.php">
-                                <input class="mypagebutton" type="hidden" name="userId" value="' . $userID . '">
+                                <input class="mypagebutton" type="hidden" name="userID" value="' . $userID . '">
                                <input class="mypagebutton" type="submit" value="編集">
                             </form>
                         </td>

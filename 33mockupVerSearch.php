@@ -68,7 +68,7 @@
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // 最終編集日時の属性を作成し、RegisterDatetimeから書き換える。
-        $sql = 'SELECT WMID,WMName,RegisterDatetime,VersionID FROM mockup WHERE WMID = ? AND UserID = ?;';
+        $sql = 'SELECT WMID,WMName,RegisterDatetime,VersionID,UserID FROM mockup WHERE WMID = ? AND UserID = ?;';
         $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
         $stmt->execute(array($WMID, $userID)); //SQL文を実行
         $count = $stmt->rowCount();
@@ -79,11 +79,11 @@
                 print '<tr>
                     <td><a href="/?wm_id=' . $row["WMID"] . '&version_id=' . $row["VersionID"] . '">' . $row["WMName"] . '</a></td>
                     <td>' . $row["VersionID"] . '</td>
-                    <td><form method="POST" name="a_form" action="33MockupDelete.php">
+                    <td><form method="POST" name="a_form" action="33MocVerDelete.php">
                             <input type="hidden" name="userID" value="' . $row['UserID'] . '">
                             <input type="hidden" name="WMID" value="' . $row['WMID'] . '">
                             <input type="hidden" name="VersionID" value="' . $row['VersionID'] . '">
-                            <a href="#" onclick="document.a_form.submit();">削除</a>
+                            <input class="menubutton" type="submit" value="削除">
                             </form>
                         </td>
                     </tr>';
@@ -97,7 +97,6 @@
 
 
         </table>
-        <p id="error">検索結果０件</p>
     </div>
 
 </body>

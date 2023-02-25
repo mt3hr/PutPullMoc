@@ -69,11 +69,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     <input class="text" type="text" value="氏名"><input class="searchbutton" type="submit" class="menubutton" value="検索">
                 </li>
             </form>
-            <form action="24KyouinRegister.php">
-                <li>
-                    <p>年度別絞り込み</p>
-                </li>
-            </form>
+            
         </ul>
         </div>
         <table>
@@ -92,40 +88,49 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt->execute(array($userID)); //SQL文を実行
             $count = $stmt->rowCount();
 
+            if($count != 0){
+                while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
 
-            while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-
-                print '<tr>
-                    <td>' . $row['UserID'] . '</td>
-                    <td>' . $row['LastName'] . '</td><td> ' . $row['FirstName'] . '</td>
-                    <td>' . $row['Email'] . '</td>
-                    <td>
-                        <form method="POST" action="./13MyPage.php">
-                            <input type="hidden" name="userID" value="' . $row['userID'] . '">
-                            <input class="mypagebutton" type="submit" value="情報編集">
+                    print '<tr>
+                        <td>' . $row['UserID'] . '</td>
+                        <td>' . $row['LastName'] . '</td><td> ' . $row['FirstName'] . '</td>
+                        <td>' . $row['Email'] . '</td>
+                        <td>
+                            <form method="POST" action="./13MyPage.php">
+                                <input type="hidden" name="userID" value="' . $row['UserID'] . '">
+                                <input class="menubutton" type="submit" value="情報編集">
+                            </form>
+                        </td>
+                        <td>
+                            <form method="POST" action="./31mockupSearch.php">
+                                <input type="hidden" name="userID" value="' . $row['UserID'] . '">
+                                <input class="menubutton" type="submit" value="課題確認">
+                            </form>
+                        </td>
+                        <td>
+                        <form method="POST" action="./26studentSearchDelete.php">
+                            <input class="menubutton" type="hidden" name="userID" value="' . $row['UserID'] . '">
+                            <input class="menubutton" type="submit" value="削除">
                         </form>
-                    </td>
-                    <td>
-                        <form method="POST" action="./31mockupSearch.php">
-                            <input type="hidden" name="userID" value="' . $row['userID'] . '">
-                            <input class="menubutton" type="submit" value="課題確認">
-                        </form>
-                    </td>
-                    <td>
-                     <form method="POST" action="./26studentSearchDelete.php">
-                        <input class="menubutton" type="hidden" name="userID" value="' . $row['UserID'] . '">
-                        <input class="menubutton" type="submit" value="削除">
-                    </form>
-                     </td>
-                    </tr>';
+                        </td>
+                        </tr>';
+                }
+            }else{
+                
+                
+                    session_start();
+                    $errorMsg = $_SESSION['errorMsg'] ?? '';
+                    print "<p id = 'error'> 検索結果0件</p>";
+                    $_SESSION['errorMsg'] = null;
+                
+                
             }
-
 
             ?>
 
 
         </table>
-        <p id="error">検索結果０件</p>
+        
     </div>
 
 </body>

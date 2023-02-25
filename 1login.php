@@ -28,10 +28,10 @@ if ($_SESSION['login'] ?? '' == 1) {
             <!-- <form method="POST" action="/1logincheck.php"> -->
             <form method="POST" action="./1logincheck.php">
                 <p id="error">
-                    <?php
+                <?php
                     session_start();
                     $errorMsg = $_SESSION['errorMsg'] ?? '';
-                    print "<p>" . $errorMsg . "</p>";
+                    print "<p id = 'error'>" . $errorMsg . "</p>";
                     $_SESSION['errorMsg'] = null;
                     ?>
                 </p>

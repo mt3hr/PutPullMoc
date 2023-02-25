@@ -51,7 +51,14 @@
         <div id="mypage">
             <h1>| 学生登録</h1>
             <p>登録する学生情報を入力してください。</p>
-            <form action="16SRchack.php" method="POST">
+            <form action="16SRChack.php" method="POST">
+            <p id="error">
+                <?php
+                    $errorMsg = $_SESSION['errorMsg'] ?? '';
+                    print "<p id = 'error'>" . $errorMsg . "</p>";
+                    $_SESSION['errorMsg'] = null;
+                    ?>
+                </p>
                 <table>
                     <tr>
                         <th>ID</th>
@@ -77,15 +84,10 @@
                     </tr>
 
                 </table>
-                <?php
-
-                $errorMsg = $_SESSION['errorMsg'] ?? '';
-                print "<p id='error'>" . $errorMsg . "</p>";
-                $_SESSION['errorMsg'] = null;
-                ?>
-
-                <input class="menubutton" type="submit" value="確認">
-                <button class="menubutton" type="button" onclick="history.back()">戻る</button>
+                
+                <button class="mypagebutton" type="button" onclick="history.back()">戻る</button>
+                <input class="mypagebutton" type="submit" value="確認">
+                
             </form>
             <!--TODO  余裕があったらCSVでの入力を
 
@@ -121,17 +123,15 @@
                 // echo "<p>ファイルを選択してください</p><br />\n";
                 // }
                 ?> -->
-            <input type="file" id="csv_file" name="usersCsv" id="usersCsv" accept=".csv" />
+            <!-- <input type="file" id="csv_file" name="usersCsv" id="usersCsv" accept=".csv" />
             <input class="menubutton" type="submit" value="送信">
-            </form>
+            </form> -->
 
 
 
         </div>
 
-    </div>
-    <button class="menubutton" type="button" onclick="history.back()">戻る</button>
-    </div>
+    
 </body>
 
 </html>

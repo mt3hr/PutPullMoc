@@ -11,6 +11,7 @@
     <header class="header">
         <div class="header-inner">
             <?php
+            session_cache_limiter('none');
                 session_start();
                 if ($_SESSION['position'] == "t") {
                     print 
@@ -49,12 +50,24 @@
     <div class="menu-page">
         <h1>| 登録情報変更</h1>
         <div id="mypage">
-            <form method="POST" action="/1login.php">
                 <table>
                     <?php
                     //TODOセッションログイン情報から自分のデータを持ってくる 
                     
-                    $userID = $POST['userID'];
+                    if ($_POST['userID'] ?? '' != null) {
+                        $userID = htmlspecialchars($_POST['userID'], ENT_QUOTES);
+                    } else {
+                        if ($_POST['MPuserID'] ?? '' != null) {
+                            $userID = htmlspecialchars($_POST['userID'], ENT_QUOTES);
+                            $_POST['MPuserID'] = null;
+                        } else {
+                            $userID = $_SESSION['userID'];
+                        }
+                    }
+                 
+                    $errorMsg = $_SESSION['errorMsg'] ?? '';
+                    print "<p id='error'>" . $errorMsg . "</p>";
+                    $_SESSION['errorMsg'] = null;
                     $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
                     $user = '21jygr01';
                     $password = '21jygr01';
@@ -71,25 +84,24 @@
                     while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
 
                         //hidden=userID text=lastname,firstname,email
-                        print '<form method="POST" action="./14MyPageChangeAct.php">
+                        print '<form method="POST" action="./14MyPageChangeActer.php">
                         <input type=”hidden” hidden name = "userID" value="' . $row['UserID'] . '">
                         <tr>
                         <th>氏名</th>
-                        <td><input class="text" size="50" type="text" name = "lastname" value="' . $row['LastName'] . '"> <input class="text" size="50" type="text" name = "lastname" value="' . $row['FirstName'] . '"></td>
+                        <td><input class="text" size="50" type="text" name = "lastname" value="' . $row['LastName'] . '"> <input class="text" size="50" type="text" name = "firstname" value="' . $row['FirstName'] . '"></td>
                         </tr>
                         <tr>
                            <th>メールアドレス</th>
                            <td><input class="text" size="50" type="text" name="email" value="' . $row['Email'] . '"></td>
                         </tr>
+                        </table>
+                        <div class="button-area">
+                            <button class="mypagebutton" type="button" onclick="history.back()">戻る</button>
+                            <input class="mypagebutton" type="submit" value="更新">
+                        </div>
                         </form>';
                     }
                     ?>
-                </table>
-                <div class="button-area">
-                    <button class="mypagebutton" type="button" onclick="history.back()">戻る</button>
-                    <input class="mypagebutton" type="submit" value="更新">
-                </div>
-            </form>
         </div>
     </div>
 </body>

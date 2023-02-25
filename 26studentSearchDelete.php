@@ -11,6 +11,7 @@
     <header class="header">
         <div class="header-inner">
             <?php
+            session_cache_limiter('none');
             session_start();
             if ($_SESSION['position'] == "t") {
                 print
@@ -66,16 +67,16 @@
 
 <body>
     <div class="menu-page">
-        <form action="26studentSearchDeleteAct.php">
             <h1>| 学生情報削除</h1>
             <p>以下の内容を削除してもよろしいですか。</p>
-            <table>
+           
                 <?php
                 //TODOセッションログイン情報から自分のデータを持ってくる
                 // https://cpoint-lab.co.jp/article/202012/18021/
-                session_cache_limiter('none');
-                session_start();
+                
+                
                 $userID = $_POST['userID'];
+                print $userID;
                 $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
                 $user = '21jygr01';
                 $password = '21jygr01';
@@ -90,28 +91,31 @@
 
 
                 while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-                    print '
-                    <tr>
-                    <th>学籍番号</th>
-                    <td>' . $row['StudentID'] . '</td>
-                    </tr>
-                    <tr>
-                    <th>氏名</th>
-                    <td>' . $row['LastName'] . '</td>
-                    <td>' . $row['FirstName'] . '</td>
-                    </tr>
-                    <th>メールアドレス</th>
-                    <td>' . $row['Email'] . '</td>
-                    </tr>';
+                    print ' 
+                    <table>
+                        <tr>
+                        <th>学籍番号</th>
+                        <td>' . $row['StudentID'] . '</td>
+                        </tr>
+                        <tr>
+                        <th>氏名</th>
+                        <td>' . $row['LastName'] . '</td>
+                        <td>' . $row['FirstName'] . '</td>
+                        </tr>
+                        <th>メールアドレス</th>
+                        <td>' . $row['Email'] . '</td>
+                        </tr>
+                    </table>
+                    <div class=button-area>
+                        
+                        <form method="POST" action="./26studentSearchDeleteAct.php">
+                        <button class="menubutton" type="button" onclick="history.back()">戻る</button>
+                        <input class="menubutton" type="hidden" name="userID" value="' . $row['UserID'] . '">
+                        <input class="menubutton" type="submit" value="削除">
+                    </form>
+                    </div>';
                 }
                 ?>
-            </table>
-            <div class=button-area>
-                <form method="POST" action="./26studentSearchDeleteAct.php"><button type="submit" class="menubutton"
-                        name="userID" value="' . $row['UserID'] . '">削除</button></from>
-                    <button class="menubutton" type="button" onclick="history.back()">戻る</button>
-                </form>
-            </div>
     </div>
 </body>
 

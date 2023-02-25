@@ -13,8 +13,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
 
-$sql = '
-        DELETE FROM mockup WHERE UserID = ?,WMID=?;';
+$sql = ' DELETE FROM mockup WHERE UserID = ? AND WMID=?;';
 $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
 $stmt->execute(array($userID,$WMID)); //SQL文を実行
 

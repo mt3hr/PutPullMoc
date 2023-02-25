@@ -4,22 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <title>教員一覧</title>
-    <link href="css/login.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
-    <header>
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
+    <link href="css/studentsearch.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/glovalnavigation.css" rel="stylesheet" type="text/css" media="all">
+    <header class="header">
+        <div class="header-inner">
+            <?php
+            session_cache_limiter('none');
+            session_start();
+            if ($_SESSION['position'] == "t") {
+                print
+                    '<h1 class="header-logo">
+                        <a href="11MenuK.php">PutPullMock</a>
+                    </h1>
+                    <nav class="header-nav">
+                        <ul class="header-navList">
+                            <li class="header-navListItem"><a id="current" href="11MenuK.php">メニュー</a></li>
+                            <li class="header-navListItem"><a href="24studentSearch.php"">学生一覧</a></li>
+                            <li class="header-navListItem"><a href="1MenuK.php">保存一覧</a></li>
+                            <li class="header-navListItem"><a href="11MenuK.php">新規作成</a></li>
+                            <li class="header-navListItem"><a href="10logout.php">ログアウト</a></li>
+                        </ul>
+                    </nav>';
+            } else {
+                print
+                    '<h1 class="header-logo">
+                        <a href="11MenuS.php">PutPullMock</a>
+                    </h1>
+                    <nav class="header-nav">
+                        <ul class="header-navList">
+                            <li class="header-navListItem"><a id="current" href="11MenuS.php">メニュー</a></li>
+                            <li class="header-navListItem"><a href="1MenuK.php">保存一覧</a></li>
+                            <li class="header-navListItem"><a href="11MenuK.php">新規作成</a></li>
+                            <li class="header-navListItem"><a href="10logout.php">ログアウト</a></li>
+                        </ul>
+                    </nav>';
+            }
+            ?>
+        </div>
     </header>
-    <div class="logo">
-        <a href="11MenuK.php"><img src="./img/ppm.png" alt="メニュー"></a>
-    </div>
-    <nav>
-        <a href="11MenuK.php">メニュー</a>
-        <a href="24studentSearch.php">学生一覧</a>
-        <a href="31mockupSearch.php">保存一覧</a>
-        <a href="/">新規作成</a>
-        <a href="10logout.php">ログアウト</a>
-        <div class="animation start-home"></div>
-    </nav>
 </head>
 <!-- post ユーザーネーム、ユーザーID  -->
 
@@ -60,7 +84,6 @@
         $stmt->execute(array($userID)); //SQL文を実行
         $count = $stmt->rowCount();
         if ($count != 0) {
-            //アラートで削除するか確認取りたい
             while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
 
 
@@ -69,7 +92,7 @@
                             <input type="hidden" name="userID" value="' . $row['UserID'] . '">
                             <input type="hidden" name="WMID" value="' . $row['WMID'] . '">
                             <input type="hidden" name="WMName" value="' . $row['WMName'] . '">
-                            <a href="#" onclick="document.a_form.submit();">' . $row['WMName'] . '</a>
+                            <input class="menubutton" type="submit" value="'.$row['WMName'].'">
                             </form>
                         </td>
                     <td>' . $row['RegisterDatetime'] . '</td>
@@ -77,7 +100,7 @@
                             <input type="hidden" name="userID" value="' . $row['UserID'] . '">
                             <input type="hidden" name="WMID" value="' . $row['WMID'] . '">
                             <input type="hidden" name="WMName" value="' . $row['WMName'] . '">
-                            <a href="#" onclick="document.a_form.submit();">削除</a>
+                            <input class="menubutton" type="submit" value="削除">
                             </form>
                         </td>
                     </tr>';

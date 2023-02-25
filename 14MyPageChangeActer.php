@@ -1,13 +1,10 @@
 <?php
+session_cache_limiter('none');
+session_start();
 //TODO　形式チェック、UPDATE
 $userID = $_SESSION['userID'];
-$dsn = 'sqlsrv:server=10.42.129.3;database=21jy0212';
-$user = '21jy0212';
-$password = '21jy0212';
-$pdo = new PDO($dsn, $user, $password);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-session_start();
+
 
 
 
@@ -43,20 +40,27 @@ if ($_POST['email'] ?? '' != null) {
 
 if (is_mail($email)) {
 
+    $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
+    $user = '21jygr01';
+    $password = '21jygr01';
+    $pdo = new PDO($dsn, $user, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+
+    
 
     // TODO 情報更新をさせる
-    $sql = 'UPDATE userTable SET LastName = ?,FirstName =?,Email = ? WHERE UserID = ?;';
+    $sql = 'UPDATE userTable SET LastName = ?,FirstName =?,Email = ? WHERE UserID = ?';
     $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-    $stmt->execute(array($lastname, $firstname, $email)); //SQL文を実行
-
-    $_SESSION['errorMsg'] = "メールアドレスの形になっていません";
+    $stmt->execute(array($lastname, $firstname, $email,$_POST['userID'])); //SQL文を実行
+    $_SESSION['message']= '更新しました。';
+    $_SESSION['MPuserID'] = $_POST['userID'];
     $uri = "./13MyPage.php";
     header("Location: " . $uri);
 
 
 } else {
-
+    $_SESSION['MPuserID'] = $_POST['userID'];
     $_SESSION['errorMsg'] = "メールアドレスの形になっていません";
     $uri = $_SERVER['HTTP_REFERER'];
     header("Location: " . $uri);

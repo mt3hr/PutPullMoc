@@ -40,35 +40,40 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 session_start();
 $email = htmlspecialchars($_POST['mail'], ENT_QUOTES);
 $pass = htmlspecialchars($_POST['pass'], ENT_QUOTES);
-$sql = "SELECT UserID,Email,PassWord FROM userTable WHERE Email = ? AND PassWord = SHA2(?,0)";
+$sql = "SELECT UserID,Email,PassWord FROM userTable WHERE Email = ? AND PassWord = ?";
 $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-$stmt->execute(array($email, $pass)); //SQL文を実行
+$stmt->execute(array($email, hash('sha256', $pass))); //SQL文を実行
 $count = $stmt->rowCount();
 
-if ($count == 0) {
-    $_SESSION['errorMsg'] = "メールアドレスまたはパスワードが間違っています。";
-    $uri = $_SERVER['HTTP_REFERER'];
-    header("Location: " . $uri);
 
-} else {
-    $_SESSION['login'] = 1;
-    while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-        $_SESSION['email'] = $row['Email'];
-        $_SESSION['userID'] = $row['UserID'];
-        $session_time = 1440 / 24 * 60 * 7;
-    }
-    $sql = "SELECT UserID FROM student WHERE UserID = ?";
-    $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-    $stmt->execute(array($_SESSION['userID'])); //SQL文を実行
-    $count = $stmt->rowCount();
+    
     if ($count == 0) {
-        $_SESSION['position'] = "t";
+        $_SESSION['errorMsg'] = "メールアドレスまたはパスワードが間違っています。";
+        $uri = $_SERVER['HTTP_REFERER'];
+        // header("Location: " . $uri);
+
     } else {
-        $_SESSION['position'] = "s";
+        $_SESSION['login'] = 1;
+
+        while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
+            $_SESSION['email'] = $row['Email'];
+            $_SESSION['userID'] = $row['UserID'];
+        }
+
+        $sql = "SELECT UserID FROM student WHERE UserID = ?";
+        $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+        $stmt->execute(array($_SESSION['userID'])); //SQL文を実行
+        $count = $stmt->rowCount();
+        if ($count == 0) {
+            $_SESSION['position'] = "t";
+        } else {
+            $_SESSION['position'] = "s";
+        }
+        
+        $uri = './11MenuK.php';
+        header("Location: " . $uri);
     }
-    $uri = './11MenuK.php';
-    header("Location: " . $uri);
-}
+
 // 
 
 ?>

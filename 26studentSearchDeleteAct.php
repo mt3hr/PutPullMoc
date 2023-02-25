@@ -10,17 +10,17 @@ $pdo = new PDO($dsn, $user, $password);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-$sql = '
-        DELETE FROM student WHERE UserID = ?;';
-$stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-$stmt->execute(array($userID)); //SQL文を実行
+
 
 $sql = '
         DELETE FROM userTable WHERE UserID = ?;';
 $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
 $stmt->execute(array($userID)); //SQL文を実行
 
-
+$sql = '
+        DELETE FROM student WHERE UserID = ?;';
+$stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+$stmt->execute(array($userID)); //SQL文を実行
 
 
 
