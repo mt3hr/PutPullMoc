@@ -3,15 +3,17 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>教員一覧</title>
+    <title>メニュー</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
-    <link href="css/studentsearch.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/glovalnavigation.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/teachermenu.css" rel="stylesheet" type="text/css" media="all">
     <header class="header">
         <div class="header-inner">
+
+            <!-- TODO ログイン時にuserの役職(学生、教師)をsessionに登録する。そこからメニュー分岐 -->
+            <!-- 保存一覧は情報を渡さないか、自分を渡すかして、表示できるようにする -->
             <?php
-            session_cache_limiter('none');
             session_start();
             if ($_SESSION['position'] == "t") {
                 print
@@ -30,7 +32,7 @@
             } else {
                 print
                     '<h1 class="header-logo">
-                        <a href="11MenuS.php">PutPullMock</a>
+                        <a href="12MenuS.php">PutPullMock</a>
                     </h1>
                     <nav class="header-nav">
                         <ul class="header-navList">
@@ -45,7 +47,6 @@
         </div>
     </header>
 </head>
-<!-- post ユーザーネーム、ユーザーID  -->
 
 <body>
     <div class="menu-page">
@@ -92,7 +93,7 @@
                             <input type="hidden" name="userID" value="' . $row['UserID'] . '">
                             <input type="hidden" name="WMID" value="' . $row['WMID'] . '">
                             <input type="hidden" name="WMName" value="' . $row['WMName'] . '">
-                            <input class="menubutton" type="submit" value="'.$row['WMName'].'">
+                            <input class="menubutton" type="submit" value="' . $row['WMName'] . '">
                             </form>
                         </td>
                     <td>' . $row['RegisterDatetime'] . '</td>
@@ -105,7 +106,7 @@
                         </td>
                     </tr>';
             }
-        }else{
+        } else {
             print "<p id='error'>検索結果０件</p>";
         }
 
