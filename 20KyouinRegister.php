@@ -51,8 +51,8 @@
         <div class="paper">
             <p>登録する教員情報を入力してください。</p>
             <form action="20KRchack.php" method="POST">
-            <p id="error">
-                <?php
+                <p id="error">
+                    <?php
                     $errorMsg = $_SESSION['errorMsg'] ?? '';
                     print "<p id = 'error'>" . $errorMsg . "</p>";
                     $_SESSION['errorMsg'] = null;
@@ -61,7 +61,7 @@
                 <table>
                     <tr>
                         <th>ID</th>
-                        <td><input class="text" size="25" type="text" name="userID" placeholder="UserID"></td>
+                        <td><input class="text" size="25" type="text" name="userID" placeholder="ユーザID"></td>
                     </tr>
                     <tr>
                         <th>氏名</th>
@@ -85,10 +85,10 @@
                         <td><input class="text" type="password" name="repass" placeholder="パスワード再入力"></td>
                     </tr>
                 </table>
-                    <div class="button-area">
-                        <button class="menubutton" type="button" onclick="history.back()">戻る</button>
-                        <input class="menubutton" type="submit" value="確認">
-                    </div>
+                <div class="button-area">
+                    <button class="menubutton" type="button" onclick="history.back()">戻る</button>
+                    <input class="menubutton" type="submit" value="確認">
+                </div>
             </form>
         </div>
 </body>
