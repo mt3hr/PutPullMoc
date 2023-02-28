@@ -22,7 +22,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     <link href="css/teachermenu.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/mypage.css" rel="stylesheet" type="text/css" media="all">
-    
+
     <header class="header">
         <div class="header-inner">
 
@@ -66,17 +66,27 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     <div class="menu-page">
         <h1>| 学生検索</h1>
         <div class="search-option">
-        <p class="paperpad">検索する学生情報を入力してください。</p>
-        <ul>
-            <form action="24KyouinRegister.php">
-                <li>
-                    <p>名前で検索
-                    </p>
-                    <input class="text" type="text" value="氏名"><input class="searchbutton" type="submit" class="menubutton" value="検索">
-                </li>
-            </form>
-            
-        </ul>
+            <p class="paperpad">検索する学生情報を入力してください。</p>
+            <ul>
+                <form action="24studentSearch.php" method="post">
+
+                    <p>名前で検索</p>
+
+                    <input class="text" type="text" name="stulastname" placeholder="苗字">
+                    <input class="text" type="text" name="stufirstname" placeholder="名前"><input class="searchbutton" type="submit"
+                        class="menubutton" value="検索">
+
+                </form>
+                <form action="24studentSearch.php" method="post">
+
+                    <p>学生番号</p>
+
+                    <input class="text" type="text" name="stunum" placeholder="学籍番号"><input class="searchbutton" type="submit"
+                        class="menubutton" value="検索">
+
+                </form>
+
+            </ul>
         </div>
         <table>
             <tr>
@@ -89,12 +99,49 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 <th></th>
             </tr>
             <?php
-            $sql = 'SELECT userTable.UserID,Email,LastName,FirstName FROM userTable INNER JOIN student ON userTable.UserID = student.UserID;';
-            $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-            $stmt->execute(array($userID)); //SQL文を実行
+            if ($_POST['stunum'] ?? '' != null ) {
+                $stunum = htmlspecialchars($_POST['stunum'], ENT_QUOTES);
+                $sql = "SELECT userTable.UserID,Email,LastName,FirstName FROM userTable INNER JOIN student ON userTable.UserID = student.UserID WHERE userTable.UserID LIKE ?;";
+                $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+                $stmt->execute(array('%'.$stunum.'%')); //SQL文を実行
+                print '<p>やあ！</p>';
+            } else if ($_POST['stufirstname'] ?? '' != null ) {
+                if($_POST['stufirstname'] == null){
+                    $_POST['stufirstname'] = "";
+                }
+                if($_POST['stulastname'] == null){
+                    $_POST['stulastname'] = "";
+                }
+                $stulastname = htmlspecialchars($_POST['stulastname'], ENT_QUOTES);
+                $stufirstname = htmlspecialchars($_POST['stufirstname'], ENT_QUOTES);
+                $sql = "SELECT userTable.UserID,Email,LastName,FirstName FROM userTable INNER JOIN student ON userTable.UserID = student.UserID WHERE LastName LIKE ? AND FirstName LIKE ?;";
+                $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+                $stmt->execute(array('%'.$stulastname.'%', '%'.$stufirstname.'%')); //SQL文を実行
+                print '<p>やあ！</p>';
+            } else if ($_POST['stulastname'] ?? '' != null ) {
+                if($_POST['stufirstname'] == null){
+                    $_POST['stufirstname'] = "";
+                }
+                if($_POST['stulastname'] == null){
+                    $_POST['stulastname'] = "";
+                }
+                $stulastname = htmlspecialchars($_POST['stulastname'], ENT_QUOTES);
+                $stufirstname = htmlspecialchars($_POST['stufirstname'], ENT_QUOTES);
+                $sql = "SELECT userTable.UserID,Email,LastName,FirstName FROM userTable INNER JOIN student ON userTable.UserID = student.UserID WHERE LastName LIKE ? AND FirstName LIKE ?;";
+                $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+                $stmt->execute(array('%'.$stulastname.'%', '%'.$stufirstname.'%')); //SQL文を実行
+            
+            } else {
+                $sql = 'SELECT userTable.UserID,Email,LastName,FirstName FROM userTable INNER JOIN student ON userTable.UserID = student.UserID;';
+                $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+                $stmt->execute(array($userID)); //SQL文を実行
+                
+            }
+
+          
             $count = $stmt->rowCount();
 
-            if($count != 0){
+            if ($count != 0) {
                 while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
 
                     print '<tr>
@@ -121,22 +168,21 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         </td>
                         </tr>';
                 }
-            }else{
-                
-                
-                    session_start();
-                    $errorMsg = $_SESSION['errorMsg'] ?? '';
-                    print "<p id = 'error'> 検索結果0件</p>";
-                    $_SESSION['errorMsg'] = null;
-                
-                
+            } else {
+
+
+                $errorMsg = $_SESSION['errorMsg'] ?? '';
+                print "<p id = 'error'> 検索結果0件</p>";
+                $_SESSION['errorMsg'] = null;
+
+
             }
 
             ?>
 
 
         </table>
-        
+
     </div>
 
 </body>
