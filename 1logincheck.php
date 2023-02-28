@@ -50,7 +50,7 @@ $count = $stmt->rowCount();
     if ($count == 0) {
         $_SESSION['errorMsg'] = "メールアドレスまたはパスワードが間違っています。";
         $uri = $_SERVER['HTTP_REFERER'];
-        // header("Location: " . $uri);
+        header("Location: " . $uri);
 
     } else {
         $_SESSION['login'] = 1;
