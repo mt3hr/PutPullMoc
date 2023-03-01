@@ -43,7 +43,7 @@ if (is_mail($email)) {
         $date = new DateTime(date("Y/m/d H:i:s"));
         $stringDate = $date->format('Y-m-d H:i:s');
         $stmt->execute(array($email, $token, $stringDate)); //SQL文を実行
-        $url = "http://localhost/6PWreset3.php?token=".$token;
+        $url = "http://localhost/6PWreset3.php?token=" . $token;
 
         $to = $email;
         $subject = "putpullmoc パスワードリセット";
@@ -88,7 +88,7 @@ if (is_mail($email)) {
         $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
         $token = bin2hex(random_bytes(32));
         $stmt->execute(array($token, $stringDate, $email)); //SQL文を実行
-        $url = "http://localhost/6PWreset3.php?token=".$token;
+        $url = "http://localhost/6PWreset3.php?token=" . $token;
 
         $to = $email;
         $subject = "putpullmoc パスワードリセット";

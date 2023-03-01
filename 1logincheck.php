@@ -46,35 +46,35 @@ $stmt->execute(array($email, hash('sha256', $pass))); //SQL文を実行
 $count = $stmt->rowCount();
 
 
-    
-    if ($count == 0) {
-        $_SESSION['errorMsg'] = "メールアドレスまたはパスワードが間違っています。";
-        $uri = $_SERVER['HTTP_REFERER'];
-        header("Location: " . $uri);
 
-    } else {
-        $_SESSION['login'] = 1;
+if ($count == 0) {
+    $_SESSION['errorMsg'] = "メールアドレスまたはパスワードが間違っています。";
+    $uri = $_SERVER['HTTP_REFERER'];
+    header("Location: " . $uri);
 
-        while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-            $_SESSION['email'] = $row['Email'];
-            $_SESSION['userID'] = $row['UserID'];
-        }
+} else {
+    $_SESSION['login'] = 1;
 
-        $sql = "SELECT UserID FROM student WHERE UserID = ?";
-        $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-        $stmt->execute(array($_SESSION['userID'])); //SQL文を実行
-        $count = $stmt->rowCount();
-        if ($count == 0) {
-            $_SESSION['position'] = "t";
-            $uri = './11MenuK.php';
-            header("Location: " . $uri);
-        } else {
-            $_SESSION['position'] = "s";
-            $uri = './12MenuS.php';
-        header("Location: " . $uri);
-        }
-        
+    while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
+        $_SESSION['email'] = $row['Email'];
+        $_SESSION['userID'] = $row['UserID'];
     }
+
+    $sql = "SELECT UserID FROM student WHERE UserID = ?";
+    $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+    $stmt->execute(array($_SESSION['userID'])); //SQL文を実行
+    $count = $stmt->rowCount();
+    if ($count == 0) {
+        $_SESSION['position'] = "t";
+        $uri = './11MenuK.php';
+        header("Location: " . $uri);
+    } else {
+        $_SESSION['position'] = "s";
+        $uri = './12MenuS.php';
+        header("Location: " . $uri);
+    }
+
+}
 
 // 
 

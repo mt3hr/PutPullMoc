@@ -3,13 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>メニュー</title>
+    <title>学生情報削除</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
     <link href="css/glovalnavigation.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/teachermenu.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/mypage.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/studentregister.css" rel="stylesheet" type="text/css" media="all">
     <header class="header">
         <div class="header-inner">
 
@@ -52,7 +50,7 @@
 
 <body>
     <div class="menu-page">
-        <h1>| 生徒登録</h1>
+        <h1>| 学生登録</h1>
         <div class="paper">
             <p>登録が完了しました</p>
         </div>
