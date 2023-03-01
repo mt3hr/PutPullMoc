@@ -17,8 +17,19 @@ if ($_POST['pass'] ?? '' != '' && $_POST['newpass'] ?? '' != '') {
 
 if ($pass == $newpass) {
     if (is_matching($pass)) {
+        $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
+        $user = '21jygr01';
+        $password = '21jygr01';
+        $pdo = new PDO($dsn, $user, $password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+        $sql = "UPDATE userTable SET PassWord = ? WHERE UserID = ?";
+        $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+        $stmt->execute(array( hash('sha256', $_POST["pass"]),$_POST["userID"])); //SQL文を実行
+
         $uri = './9PWreset5.php';
-        print '成功';
+
         header("Location: " . $uri);
     } else {
         $_SESSION['errorMsg'] = "パスワードは8文字以上50文字以内、英数字で入力してください";

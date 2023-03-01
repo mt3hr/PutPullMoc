@@ -81,7 +81,6 @@ if ($_errorCode == true) {
 
         if (is_password($pass)) {
             if (is_mail($Email)) {
-                $_SESSION['errorMsg'] .= 'ここまでおｋ';
                 if ($count == 0) {
                     $_SESSION['regstEmail'] = $Email;
                     $_SESSION['regstPass'] = $pass;

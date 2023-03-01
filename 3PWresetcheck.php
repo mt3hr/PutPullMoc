@@ -1,21 +1,9 @@
 <?php
 
-// $dsn = 'sqlsrv:server=10.42.129.3;database=21jy0212';
-// $user = '21jy0212';
-// $password = '21jy0212';
-// $pdo = new PDO($dsn, $user, $password);
-// $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-//     session_start();
-//     $email= htmlspecialchars( $_POST['mail'], ENT_QUOTES);
-//     $pass= htmlspecialchars( $_POST['pass'], ENT_QUOTES);
-//     $sql="SELECT CustomerName,EMail,Pass FROM Customer WHERE EMail = ? AND Pass = ?";
-//     $stmt = $pdo->prepare($sql,array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-//     $stmt->execute(array($email,$pass));   //SQL文を実行
-//     $count = $stmt->rowCount();
 session_start();
-if ($_POST['Email'] ?? '' != null) {
-    $Email = htmlspecialchars($_POST['Email'], ENT_QUOTES);
+if ($_POST['email'] ?? '' != null) {
+    $email = htmlspecialchars($_POST['email'], ENT_QUOTES);
 } else {
     $_SESSION['errorMsg'] = "何も入力されていません";
     // print $_SESSION['errorMsg'];
@@ -30,24 +18,95 @@ if ($_POST['Email'] ?? '' != null) {
 //登録されているかチェックし、可否でメール内容を変える
 //https://zenn.dev/syamozipc/articles/php_password_reset
 //DATABASEにreset Torcken票が欲しいかも。
-if (is_mail($Email)) {
+if (is_mail($email)) {
 
 
-    // //meil送信
-    // mb_language("Japanese");
-    // mb_internal_encoding("UTF-8");
 
-    // $to = $Email;
-    // $subject = "HTML MAIL";
-    // $message = "<html><body><h1>This is HTML MAIL</h1></body></html>";
-    // $headers = "From: from@example.com";
-    // $headers .= "\r\n";
-    // $headers .= "Content-type: text/html; charset=UTF-8";
-    // mb_send_mail($to, $subject, $message, $headers); 
+    mb_language("japanese");
+    mb_internal_encoding("UTF-8");
+
+    $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
+    $user = '21jygr01';
+    $password = '21jygr01';
+    $pdo = new PDO($dsn, $user, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-    $uri = './5PWreset2.php';
-    header("Location: " . $uri);
+    $sql = "SELECT Email,token,ResetSentAt FROM passwordReset WHERE Email = ?";
+    $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+    $stmt->execute(array($email)); //SQL文を実行
+    $count = $stmt->rowCount();
+    if ($count == 0) {
+        $sql = "INSERT INTO passwordReset VALUES(?,?,?)";
+        $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+        $token = bin2hex(random_bytes(32));
+        $date = new DateTime(date("Y/m/d H:i:s"));
+        $stringDate = $date->format('Y-m-d H:i:s');
+        $stmt->execute(array($email, $token, $stringDate)); //SQL文を実行
+        $url = "http://localhost/6PWreset3.php?token=".$token;
+
+        $to = $email;
+        $subject = "putpullmoc パスワードリセット";
+        $body = "{$to}様\r\n";
+        $body .= "パスワードリセットの依頼を受け付けました。\r\n";
+        $body .= "以下のURLをクリックしてパスワードの再設定を行って下さい。\r\n";
+        $body .= "\r\nーパスワード再設定URLー\r\n";
+        $body .= $url;
+        mb_send_mail($to, $subject, $body, "From:21jy0100@jynet.jec.ac.jp");
+        $uri = './5PWreset2.php';
+        header("Location: " . $uri);
+
+    } else {
+        while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
+            $timesent = new DateTime($row['ResetSentAt']);
+            $nowTime = new DateTime(date("Y/m/d H:i:s"));
+            $stringDate = $nowTime->format('Y-m-d H:i:s');
+            $token = $row['token'];
+        }
+        //nowからsent1を引いて期間内だったら期限更新、外だったら期限、トークン更新
+        // if ($nowTime->diff($timesent) < 3600 * 2) {
+        //     $sql = "UPDATE passwordReset SET ResetSentAt=? WHERE Email =?";
+        //     $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+        //     $stmt->execute(array($email, $stringDate)); //SQL文を実行
+
+
+        //     $url = "http://localhost/6PWreset3.php?token={$token}";
+
+        //     $to = $email;
+        //     $subject = "putpullmoc パスワードリセット";
+        //     $body = "{$to}様\r\n";
+        //     $body .= "パスワードリセットの依頼を受け付けました。\r\n";
+        //     $body .= "以下のURLをクリックしてパスワードの再設定を行って下さい。\r\n";
+        //     $body .= "\r\nーパスワード再設定URLー\r\n";
+        //     $body .= $url;
+        //     mb_send_mail($to, $subject, $body, "From:21jy0100@jynet.jec.ac.jp");
+        //     $uri = './5PWreset2.php';
+        //     header("Location: " . $uri);
+
+        // } else {
+        $sql = "UPDATE passwordReset SET token=?,ResetSentAt=? WHERE Email =?";
+        $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+        $token = bin2hex(random_bytes(32));
+        $stmt->execute(array($token, $stringDate, $email)); //SQL文を実行
+        $url = "http://localhost/6PWreset3.php?token=".$token;
+
+        $to = $email;
+        $subject = "putpullmoc パスワードリセット";
+        $body = "{$to}様\r\n";
+        $body .= "パスワードリセットの依頼を受け付けました。\r\n";
+        $body .= "以下のURLをクリックしてパスワードの再設定を行って下さい。\r\n";
+        $body .= "\r\nーパスワード再設定URLー\r\n";
+        $body .= $url;
+        mb_send_mail($to, $subject, $body, "From:21jy0100@jynet.jec.ac.jp");
+        $uri = './5PWreset2.php';
+        header("Location: " . $uri);
+        // }
+
+
+    }
+
+
+
 
 } else {
 

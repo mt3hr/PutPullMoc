@@ -24,7 +24,7 @@
                 ?>
             </p>
             <form method="POST" action="./3PWresetcheck.php">
-                <input class="text" type="text" name='Email' placeholder="メールアドレス">
+                <input class="text" type="text" name='email' placeholder="メールアドレス">
                 <input class="button" type="submit" name="submit" value="送信">
             </form>
         </div>

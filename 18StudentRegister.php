@@ -79,7 +79,7 @@
 
         <form action="19SRDataInsert.php" method="post">
             <?php
-            print '<input type="hidden" name="userid" value="' . $_SESSION['regstuesrID'] . '">
+            print '<input type="hidden" name="userid" value="' . $_SESSION['regstuserID'] . '">
             <input type="hidden" name="surname" value="' . $_SESSION['regstSurname'] . '">
             <input type="hidden" name="name" value="' . $_SESSION['regstName'] . '">
             <input type="hidden" name="email" value="' . $_SESSION['regstEmail'] . '">
