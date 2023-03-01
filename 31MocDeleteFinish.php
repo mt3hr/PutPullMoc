@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>メニュー</title>
+    <title>モックアップ削除</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
     <link href="css/glovalnavigation.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/teachermenu.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/studentregister.css" rel="stylesheet" type="text/css" media="all">
     <header class="header">
         <div class="header-inner">
 
@@ -50,15 +50,19 @@
 
 <body>
     <div class="menu-page">
-        <h1>モックアップバージョン削除</h2>
+        <h1>| モックアップ削除</h1>
+        <div class="paper">
             <p>削除しました。</p>
-            <form action="31mockupSearch.php" method="POST">
-                <?php
-                $userID = $_SESSION['mocUserID'];
-                print ' <input class="menubutton"  type="hidden" name="userId" value="' . $userID . '">';
-                ?>
+        </div>
+        <form action="31mockupSearch.php" method="POST">
+            <?php
+            $userID = $_SESSION['mocUserID'];
+            print ' <input class="menubutton"  type="hidden" name="userId" value="' . $userID . '">';
+            ?>
+            <div class="button-area">
                 <input class="menubutton" type="submit" value="戻る">
-            </form>
+            </div>
+        </form>
     </div>
 </body>
 

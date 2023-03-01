@@ -15,11 +15,11 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 <head>
     <meta charset="UTF-8">
-    <title>メニュー</title>
+    <title>学生一覧</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
     <link href="css/glovalnavigation.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/teachermenu.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/studentsearch.css" rel="stylesheet" type="text/css" media="all">
     <header class="header">
         <div class="header-inner">
 
