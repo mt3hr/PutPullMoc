@@ -16,12 +16,10 @@
             <h2>パスワードリセット</h2>
             <p>メールを送信しました。</p>
             
-            <form method="POST" action="./index.php">
+            <form method="POST" action="./1login.php">
                 <input class="button" type="submit" name="submit" value="ログインへ">
             </form>
-            <form method="POST" action="./6PWreset3.php">
-                <input class="button" type="submit" name="submit" value="次へ">
-            </form>
+            
         </div>
     </div>
 </body>

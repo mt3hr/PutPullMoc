@@ -8,12 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
     <link href="css/glovalnavigation.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/teachermenu.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/mypage.css" rel="stylesheet" type="text/css" media="all">
     <header class="header">
         <div class="header-inner">
 
             <!-- TODO ログイン時にuserの役職(学生、教師)をsessionに登録する。そこからメニュー分岐 -->
             <!-- 保存一覧は情報を渡さないか、自分を渡すかして、表示できるようにする -->
             <?php
+            session_cache_limiter('none');
             session_start();
             if ($_SESSION['position'] == "t") {
                 print

@@ -15,7 +15,7 @@
             <h1>PutPullMock</h1>
             <h2>パスワードリセット</h2>
             <p>パスワードをリセットしました</p>
-            <form method="POST" action="./index.php">
+            <form method="POST" action="./1login.php">
                 <input class="button" type="submit" name="submit" value="ログインへ">
             </form>
         </div>
