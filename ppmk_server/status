@@ -2,5 +2,5 @@
     "login_system": false,
     "enable_reset_password": false,
     "enable_register": false,
-    "jec_jy_graduationwork": false
+    "jec_jy_graduationwork": true 
 }
