@@ -5,7 +5,6 @@ session_start();
 $userID = $_POST['userID'];
 $WMID = $_POST['WMID'];
 $VersionID = $_POST['VersionID'];
-$VersionID = $_POST['WMName'];
 $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
 $user = '21jygr01';
 $password = '21jygr01';

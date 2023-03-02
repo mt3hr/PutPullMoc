@@ -28,6 +28,11 @@ if ($pass == $newpass) {
         $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
         $stmt->execute(array(hash('sha256', $_POST["pass"]), $_POST["userID"])); //SQL文を実行
 
+        //DELETE
+        // $sql = "UPDATE userTable SET PassWord = ? WHERE UserID = ?";
+        // $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+        // $stmt->execute(array(hash('sha256', $_POST["pass"]), $_POST["userID"])); //SQL文を実行
+
         $uri = './9PWreset5.php';
 
         header("Location: " . $uri);

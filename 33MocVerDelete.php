@@ -29,7 +29,7 @@
                             <li class="header-navListItem"><a href="10logout.php">ログアウト</a></li>
                         </ul>
                     </nav>';
-            } else {
+            } else if ($_SESSION['position'] == "s"){
                 print
                     '<h1 class="header-logo">
                         <a href="12MenuS.php">PutPullMock</a>
@@ -42,6 +42,9 @@
                             <li class="header-navListItem"><a href="10logout.php">ログアウト</a></li>
                         </ul>
                     </nav>';
+            }else{
+                $uri = './10logout.php';
+                header("Location: " . $uri);
             }
             ?>
         </div>

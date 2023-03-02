@@ -113,7 +113,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sql = "SELECT userTable.UserID,Email,LastName,FirstName FROM userTable INNER JOIN student ON userTable.UserID = student.UserID WHERE LastName LIKE ? AND FirstName LIKE ?;";
                 $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
                 $stmt->execute(array('%'.$stulastname.'%', '%'.$stufirstname.'%')); //SQL文を実行
-                print '<p>やあ！</p>';
+
             } else if ($_POST['stulastname'] ?? '' != null ) {
                 if($_POST['stufirstname'] == null){
                     $_POST['stufirstname'] = "";

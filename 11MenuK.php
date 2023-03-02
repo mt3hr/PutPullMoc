@@ -53,79 +53,82 @@
         <h1>| メニュー</h1>
         <div class="menulist-right">
             <div class="menuitem">
-                <form method="POST" action="./24studentSearch.php">
+                <a href="./24studentSearch.php">
                     <div class="icon">
                         <img src="img/studentListIcon.png">
                     </div>
-                    <input class="menubutton" type="submit" name="submit" value="学生一覧">
-                    <p>学生の検索、課題の閲覧、学生情報の削除</p>
-                </form>
+                    <h3 class="menubutton">学生一覧<h3>
+                            <p>学生の検索、課題の閲覧、学生情報の削除</p>
+                </a>
             </div>
 
             <div class="menuitem">
-                <div class="icon">
-                    <img src="img/teacherListIcon.png">
-                </div>
-                <form method="POST" action="./28teacherSearch.php">
-                    <input class="menubutton" type="submit" name="submit" value="教員一覧">
-                    <p>教員情報の閲覧、削除</p>
-                </form>
+                <a href="./28teacherSearch.php">
+                    <div class="icon">
+                        <img src="img/teacherListIcon.png">
+                    </div>
+                    <h3 class="menubutton">教員一覧<h3>
+                            <p>教員情報の閲覧、削除</p>
+                </a>
             </div>
 
             <div class="menuitem-right">
-                <div class="icon">
-                    <img src="img/mypageIcon.png">
-                </div>
-                <form method="POST" action="./13MyPage.php">
-                    <input class="menubutton" type="submit" name="submit" value="マイページ">
-                    <p>登録情報の閲覧、編集</p>
-                </form>
+                <a href="./13MyPage.php">
+                    <div class="icon">
+                        <img src="img/mypageIcon.png">
+                    </div>
+                    <h3 class="menubutton">マイページ<h3>
+                            <p>登録情報の閲覧、編集</p>
+                </a>
             </div>
         </div>
         <div class="menulist">
             <div class="menuitem">
-                <div class="icon">
-                    <img src="img/studentRegisterIcon.png">
-                </div>
-                <form method="POST" action="./16StudentRegister.php">
-                    <input class="menubutton" type="submit" name="submit" value="学生登録">
-                    <p>学生新規登録</p>
-                </form>
+                <a href="./16StudentRegister.php">
+                    <div class="icon">
+                        <img src="img/studentRegisterIcon.png">
+                    </div>
+                    <h3 class="menubutton">学生登録<h3>
+                            <p>学生新規登録</p>
+                </a>
             </div>
 
             <div class="menuitem">
-                <div class="icon">
-                    <img src="img/teachearRegisterIcon.png">
-                </div>
-                <form method="POST" action="./20KyouinRegister.php">
-                    <input class="menubutton" type="submit" name="submit" value="教員登録">
-                    <p>教員新規登録</p>
-                </form>
+                <a href="./20KyouinRegister.php">
+                    <div class="icon">
+                        <img src="img/teachearRegisterIcon.png">
+                    </div>
+                    <h3 class="menubutton">教員登録<h3>
+                            <p>教員新規登録</p>
+                </a>
             </div>
         </div>
         <div class="menulist">
             <div class="menuitem">
+                <?php
+                $userID = $_SESSION['userID'];
+                print '<a href="./31mockupSearch.php?userID=' . $userID . '">';
+                ?>
+
                 <div class="icon">
                     <img src="img/openProjectIcon.png">
                 </div>
-                <form method="POST" action="./31mockupSearch.php">
-                    <input class="menubutton" type="submit" name="submit" value="保存一覧">
-                    <?php
-                    $userID = $_SESSION['userID'];
-                    print '<input type="hidden" name="userID" value="' . $userID . '">';
-                    ?>
-                    <p>保存済みモックアップ</p>
-                </form>
+                <h3 class="menubutton">保存一覧<h3>
+
+
+                        <p>保存済みモックアップ</p>
+                        </a>
             </div>
 
             <div class="menuitem">
-                <div class="icon">
-                    <img src="img/newProjectIcon.png">
-                </div>
-                <form method="POST" action="/">
-                    <input class="menubutton" type="submit" name="submit" value="新規作成">
-                    <p>モックアップ新規作成</p>
-                </form>
+
+                <a href="/">
+                    <div class="icon">
+                        <img src="img/newProjectIcon.png">
+                    </div>
+                    <h3 class="menubutton">新規作成<h3>
+                            <p>モックアップ新規作成</p>
+                </a>
             </div>
         </div>
     </div>

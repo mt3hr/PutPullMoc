@@ -14,6 +14,7 @@
             <!-- TODO ログイン時にuserの役職(学生、教師)をsessionに登録する。そこからメニュー分岐 -->
             <!-- 保存一覧は情報を渡さないか、自分を渡すかして、表示できるようにする -->
             <?php
+             session_cache_limiter('none');
             session_start();
             if ($_SESSION['position'] == "t") {
                 print
@@ -101,11 +102,14 @@
                         </tr>
                         <tr>
                            <th>メールアドレス</th>
-                           <td>' . $row['Email'] . '</td>
-                           <td>
+                           <td>' . $row['Email'] . '</td>';
+                    if ($_SESSION['userID'] == $userID) {
+                        print '<td>
                               <form method="POST" action="/10logout.php"><input class="mypagebutton" type="submit" value="ログアウト"></form>
-                          </td>
-                        </tr>';
+                          </td>';
+                    }
+
+                    print '</tr>';
                 }
                 ?>
             </table>
