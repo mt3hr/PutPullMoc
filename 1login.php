@@ -10,6 +10,7 @@
 </head>
 
 <?php
+session_start();
 //userがログインしていないかチェック
 if ($_SESSION['login'] ?? '' == 1) {
     $uri = './11MenuK.php';
@@ -23,7 +24,7 @@ if ($_SESSION['login'] ?? '' == 1) {
 <body>
     <div class="login-page">
         <div class="form">
-            <h1>PutPullMock</h1>
+            <a href="/"><h1>PutPullMock</h1></a>
             <h2>ログイン</h2>
             <!-- <form method="POST" action="/1logincheck.php"> -->
             <form method="POST" action="./1logincheck.php">

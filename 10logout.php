@@ -20,7 +20,7 @@ setcookie("PHPSESSID", '', time() - 1800, '/') // 小路へ。ログイン・ロ
 <body>
     <div class="login-page">
         <div class="form">
-            <h1>PutPullMock</h1>
+            <a href="/"><h1>PutPullMock</h1></a>
             <h2>ログアウト</h2>
             <p>ログアウトしました</p>
             <form method="POST" action="./1login.php">
