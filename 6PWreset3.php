@@ -23,8 +23,8 @@ $stmt->execute(array($passwordResetToken)); //SQL文を実行
 $count = $stmt->rowCount();
 
 while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-    $timesent = DateTime::createFromFormat("Y-m-d H:i:s",$row['ResetSentAt']);
-    
+    $timesent = DateTime::createFromFormat("Y-m-d H:i:s", $row['ResetSentAt']);
+
     $email = $row['Email'];
 }
 

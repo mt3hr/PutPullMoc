@@ -7,9 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
     <link href="css/glovalnavigation.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/teachermenu.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/mypage.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/studentregister.css" rel="stylesheet" type="text/css" media="all">
     <header class="header">
         <div class="header-inner">
 
@@ -52,21 +50,25 @@
 
 <body>
     <div class="menu-page">
-        <h1>モックアップバージョン削除</h2>
+        <h1>| モックアップバージョン削除</h1>
+        <div class="paper">
             <p>削除しました。</p>
-            <form action="33mockupVerSearch.php" method="POST">
-                <?php
-                $userID = $_SESSION['mocUserID'];
-                $WMID = $_SESSION['WMID'];
-                $VersionID = $_SESSION['VersionID'];
-                $WMNAME = $_SESSION['WMName'];
-                print '<input type="hidden" name="userID" value="' . $userID . '">
+        </div>
+        <form action="33mockupVerSearch.php" method="POST">
+            <?php
+            $userID = $_SESSION['mocUserID'];
+            $WMID = $_SESSION['WMID'];
+            $VersionID = $_SESSION['VersionID'];
+            $WMNAME = $_SESSION['WMName'];
+            print '<input type="hidden" name="userID" value="' . $userID . '">
                             <input type="hidden" name="WMID" value="' . $WMID . '">
                             <input type="hidden" name="VersionID" value="' . $VersionID . '">
                             <input type="hidden" name="WMName" value="' . $WMNAME . '"><input class="menubutton"  type="hidden" name="userId" value="' . $userID . '">';
-                ?>
+            ?>
+            <div class="button-area">
                 <input class="menubutton" type="submit" value="戻る">
-            </form>
+            </div>
+        </form>
     </div>
 </body>
 

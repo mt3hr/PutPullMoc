@@ -3,13 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>メニュー</title>
+    <title>学生情報削除</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
     <link href="css/glovalnavigation.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/teachermenu.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/mypage.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/studentsearch.css" rel="stylesheet" type="text/css" media="all">
     <header class="header">
         <div class="header-inner">
 
@@ -49,33 +47,34 @@
         </div>
     </header>
 </head>
+
 <body>
     <div class="menu-page">
-            <h1>| 学生情報削除</h1>
-            <p>以下の内容を削除してもよろしいですか。</p>
-           
-                <?php
-                //TODOセッションログイン情報から自分のデータを持ってくる
-                // https://cpoint-lab.co.jp/article/202012/18021/
-                
-                
-                $userID = $_POST['userID'];
-                print $userID;
-                $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
-                $user = '21jygr01';
-                $password = '21jygr01';
-                $pdo = new PDO($dsn, $user, $password);
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        <h1>| 学生情報削除</h1>
+        <p>以下の内容を削除してもよろしいですか。</p>
+
+        <?php
+        //TODOセッションログイン情報から自分のデータを持ってくる
+        // https://cpoint-lab.co.jp/article/202012/18021/
+        
+
+        $userID = $_POST['userID'];
+        print $userID;
+        $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
+        $user = '21jygr01';
+        $password = '21jygr01';
+        $pdo = new PDO($dsn, $user, $password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-                $sql = 'SELECT StudentID,userTable.UserID,Email,LastName,FirstName FROM userTable inner join student on userTable.UserID = student.UserID WHERE userTable.UserID = ?;';
-                $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-                $stmt->execute(array($userID)); //SQL文を実行
-                $count = $stmt->rowCount();
+        $sql = 'SELECT StudentID,userTable.UserID,Email,LastName,FirstName FROM userTable inner join student on userTable.UserID = student.UserID WHERE userTable.UserID = ?;';
+        $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+        $stmt->execute(array($userID)); //SQL文を実行
+        $count = $stmt->rowCount();
 
 
-                while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-                    print ' 
+        while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
+            print ' 
                     <table>
                         <tr>
                         <th>学籍番号</th>
@@ -98,8 +97,8 @@
                         <input class="menubutton" type="submit" value="削除">
                     </form>
                     </div>';
-                }
-                ?>
+        }
+        ?>
     </div>
 </body>
 

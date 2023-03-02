@@ -3,13 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>メニュー</title>
+    <title>学生登録</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
     <link href="css/glovalnavigation.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/teachermenu.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/mypage.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/kyoinregister.css" rel="stylesheet" type="text/css" media="all">
     <header class="header">
         <div class="header-inner">
 
@@ -66,13 +64,17 @@
                 <table>
                     <tr>
                         <th>ID</th>
-                        <td><input class="text" size="25" type="text" name="userID" placeholder="UserID"></td>
+                        <td><input class="text" size="25" type="text" name="userID" placeholder="ユーザID"></td>
                     </tr>
 
                     <tr>
                         <th>氏名</th>
-                        <td><input class="text" size="25" type="text" name="surname" placeholder="姓"></td>
-                        <td><input class="text" size="25" type="text" name="name" placeholder="名"></td>
+                        <td class="name">
+                            <input class="text text-name" size="25" type="text" name="surname" placeholder="姓">
+                        </td>
+                        <td class="name left">
+                            <input class="text text-name" size="25" type="text" name="name" placeholder="名">
+                        </td>
                     </tr>
                     <tr>
                         <th>メールアドレス</th>
@@ -88,10 +90,10 @@
                     </tr>
 
                 </table>
-
-                <button class="mypagebutton" type="button" onclick="history.back()">戻る</button>
-                <input class="mypagebutton" type="submit" value="確認">
-
+                <div class="button-area">
+                    <button class="menubutton" type="button" onclick="history.back()">戻る</button>
+                    <input class="menubutton" type="submit" value="確認">
+                </div>
             </form>
             <!--TODO  余裕があったらCSVでの入力を
 

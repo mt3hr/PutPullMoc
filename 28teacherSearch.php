@@ -3,13 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>メニュー</title>
+    <title>教員一覧</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
     <link href="css/glovalnavigation.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/teachermenu.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/mypage.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/studentsearch.css" rel="stylesheet" type="text/css" media="all">
     <header class="header">
         <div class="header-inner">
 
@@ -65,7 +63,7 @@
             </tr>
             <?php
 
-            
+
             $userID = $_SESSION['userID'];
             $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
             $user = '21jygr01';
@@ -79,7 +77,7 @@
             $stmt->execute(array($userID)); //SQL文を実行
             $count = $stmt->rowCount();
 
-            if($count != 0){
+            if ($count != 0) {
                 while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
 
 
@@ -109,23 +107,23 @@
                         ';
                 }
                 print '</table>';
-            }else{
-                
-                
+            } else {
+
+
                 session_start();
                 $errorMsg = $_SESSION['errorMsg'] ?? '';
                 print "<p id = 'error'> 検索結果0件</p>";
                 $_SESSION['errorMsg'] = null;
-            
-            
+
+
             }
-            
+
 
             ?>
-        
-            
-        
-        
+
+
+
+
     </div>
 
 </body>

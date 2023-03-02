@@ -3,13 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>メニュー</title>
+    <title>教員登録</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
     <link href="css/glovalnavigation.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/teachermenu.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/mypage.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/kyoinregister.css" rel="stylesheet" type="text/css" media="all">
     <header class="header">
         <div class="header-inner">
 
@@ -80,9 +78,9 @@
         <div class="button-area">
             <!-- 小路とさいとうさんへ。buttonからinputに変更があったようなのでCSS再適用が必要かもしれないです。 -->
             <!-- もともとあったコード→ <button class="menubutton" type="button" onclick="history.back()">戻る</button> -->
-            
 
-            <form action="23KRDataInsert.php" method ="POST">
+
+            <form action="23KRDataInsert.php" method="POST">
                 <button class="menubutton" type="button" onclick="history.back()">戻る</button>
                 <?php
                 print '<input type="hidden" name="userid" value="' . $_SESSION['regstuserID'] . '">
@@ -94,7 +92,7 @@
                     '
                     ?>
 
-                
+
             </form>
         </div>
 </body>

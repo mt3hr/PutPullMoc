@@ -3,12 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>メニュー</title>
+    <title>マイページ</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
     <link href="css/glovalnavigation.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/teachermenu.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/mypage.css" rel="stylesheet" type="text/css" media="all">
     <header class="header">
         <div class="header-inner">
@@ -69,7 +67,7 @@
                     }
                 }
                 if ($_SESSION['message'] ?? '' != null) {
-                    print '<p>'.$_SESSION['message'].'</p>';
+                    print '<p>' . $_SESSION['message'] . '</p>';
                     $_SESSION['message'] = null;
                 }
                 $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';

@@ -28,6 +28,7 @@ $password = 'password';
 
 
 ?>
+
 <body>
     <div class="login-page">
         <div class="form">
@@ -47,7 +48,7 @@ $password = 'password';
                 <input class="text" type="password" name="pass" placeholder="パスワード" />
                 <input class="button" type="submit" name="submit" value="ログイン">
             </form>
-            
+
             <a href="./3PWreset.php">パスワードを忘れた場合</a>
         </div>
     </div>

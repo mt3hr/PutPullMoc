@@ -47,13 +47,13 @@ if (is_mail($email)) {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-    
+
 
     // TODO 情報更新をさせる
     $sql = 'UPDATE userTable SET LastName = ?,FirstName =?,Email = ? WHERE UserID = ?';
     $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-    $stmt->execute(array($lastname, $firstname, $email,$_POST['userID'])); //SQL文を実行
-    $_SESSION['message']= '更新しました。';
+    $stmt->execute(array($lastname, $firstname, $email, $_POST['userID'])); //SQL文を実行
+    $_SESSION['message'] = '更新しました。';
     $_SESSION['MPuserID'] = $_POST['userID'];
     $uri = "./13MyPage.php";
     header("Location: " . $uri);

@@ -17,10 +17,10 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $sql = 'DELETE FROM mockup WHERE UserID = ? AND WMID=? AND VersionID=?;';
 $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-$stmt->execute(array($userID,$WMID,$VersionID)); //SQL文を実行
+$stmt->execute(array($userID, $WMID, $VersionID)); //SQL文を実行
 
 
- $_SESSION['WMID']=$WMID;
+$_SESSION['WMID'] = $WMID;
 $_SESSION['VersionID'] = $VersionID;
 $_SESSION['WMName'] = $VersionID;
 $_SESSION['mocUserID'] = $userID;
