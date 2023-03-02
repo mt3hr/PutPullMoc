@@ -167,10 +167,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } else {
 
 
-<<<<<<< HEAD
-=======
                 session_start();
->>>>>>> saitou
                 $errorMsg = $_SESSION['errorMsg'] ?? '';
                 print "<p id = 'error'> 検索結果0件</p>";
                 $_SESSION['errorMsg'] = null;
