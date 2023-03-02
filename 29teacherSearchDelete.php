@@ -50,7 +50,6 @@
 
 <body>
     <div class="menu-page">
-        <form action="26studentSearchDeleteAct.php">
             <h1>| 教員情報削除</h1>
             <p>以下の内容を削除してもよろしいですか。</p>
             <table>

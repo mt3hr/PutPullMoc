@@ -53,27 +53,29 @@
         <h1>| メニュー</h1>
         <div class="menulist">
             <div class="menuitem">
+                <?php
+                $userID = $_SESSION['userID'];
+                print '<a href="./31mockupSearch.php?userID=' . $userID . '">';
+                ?>
+
                 <div class="icon">
                     <img src="img/openProjectIcon.png">
                 </div>
-                <form method="POST" action="./31mockupSearch.php">
-                    <input class="menubutton" type="submit" name="submit" value="保存一覧">
-                    <?php
-                    $userID = $_SESSION['userID'];
-                    print('<input type="hidden" name="userID" value="' . $userID . '">');
-                    ?>
-                    <p>保存済みモックアップ</p>
-                </form>
+                <h3 class="menubutton">保存一覧<h3>
+
+
+                        <p>保存済みモックアップ</p>
+                        </a>
             </div>
 
             <div class="menuitem">
-                <div class="icon">
-                    <img src="img/newProjectIcon.png">
-                </div>
-                <form method="POST" action="./index.php">
-                    <input class="menubutton" type="submit" name="submit" value="新規作成">
-                    <p>モックアップ新規作成</p>
-                </form>
+                <a href="./index.php">
+                    <div class="icon">
+                        <img src="img/newProjectIcon.png">
+                    </div>
+                    <h3 class="menubutton">新規作成<h3>
+                            <p>モックアップ新規作成</p>
+                </a>
             </div>
         </div>
     </div>

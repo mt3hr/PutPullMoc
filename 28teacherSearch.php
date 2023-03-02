@@ -85,18 +85,7 @@
                         <td>' . $row['LastName'] . '</td>
                         <td>' . $row['FirstName'] . '</td>
                         <td>' . $row['Email'] . '</td>
-                        <td>
-                            <form method="POST" action="./13MyPage.php">
-                                <input type="hidden" name="userID" value="' . $row['UserID'] . '">
-                                <input class="menubutton" type="submit" value="情報編集">
-                            </form>
-                        </td>
-                        <td>
-                            <form method="POST" action="./31mockupSearch.php">
-                                <input type="hidden" name="userID" value="' . $row['UserID'] . '">
-                                <input class="menubutton" type="submit" value="課題確認">
-                            </form>
-                        </td>
+                        
                         <td>
                         <form method="POST" action="./29teacherSearchDelete.php">
                             <input class="menubutton" type="hidden" name="userID" value="' . $row['UserID'] . '">

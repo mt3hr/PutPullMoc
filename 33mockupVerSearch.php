@@ -78,7 +78,12 @@
             while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
 
                 print '<tr>
-                    <td><a href="/?wm_id=' . $row["WMID"] . '&version_id=' . $row["VersionID"] . '">' . $row["WMName"] . '</a></td>
+                    <td><form method="GET" name="a_form" action="33MocVerDelete.php">
+                    <input class="menubutton" type="submit" value="削除">
+                    <input type="hidden" name="wm_id" value="' . $row['WMID'] . '">
+                            <input type="hidden" name="version_id" value="' . $row['VersionID'] . '">
+                    </form>
+                    </td>
                     <td>' . $row["VersionID"] . '</td>
                     <td><form method="POST" name="a_form" action="33MocVerDelete.php">
                             <input type="hidden" name="userID" value="' . $row['UserID'] . '">
