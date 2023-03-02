@@ -32,7 +32,7 @@ $password = 'password';
 <body>
     <div class="login-page">
         <div class="form">
-            <h1>PutPullMock</h1>
+            <a href="/"><h1>PutPullMock</h1></a>
             <h2>ログイン</h2>
             <!-- <form method="POST" action="/1logincheck.php"> -->
             <form method="POST" action="./1logincheck.php">
