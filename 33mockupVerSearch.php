@@ -81,7 +81,7 @@
                     <td><form method="GET" name="a_form" action="/">
                     <input class="menubutton" type="submit" value="' . $row['WMName'] . '">
                     <input type="hidden" name="wm_id" value="' . $row['WMID'] . '">
-                    <input type="hidden" name="owner_user_id" value="' . $_row["UserID"] . '">
+                    <input type="hidden" name="owner_user_id" value="' . $row["UserID"] . '">
                             <input type="hidden" name="version_id" value="' . $row['VersionID'] . '">
                     </form>
                     </td>
