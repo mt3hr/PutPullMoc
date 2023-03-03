@@ -78,8 +78,8 @@
             while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
 
                 print '<tr>
-                    <td><form method="GET" name="a_form" action="33MocVerDelete.php">
-                    <input class="menubutton" type="submit" value="削除">
+                    <td><form method="GET" name="a_form" action="/">
+                    <input class="menubutton" type="submit" value="' . $row['WMName'] . '">
                     <input type="hidden" name="wm_id" value="' . $row['WMID'] . '">
                             <input type="hidden" name="version_id" value="' . $row['VersionID'] . '">
                     </form>
