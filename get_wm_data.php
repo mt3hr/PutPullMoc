@@ -15,7 +15,7 @@ $version_id = $jsondata["version_id"];
 
 // 小路へ。Userで絞り込むと、教員が他人のモックアップを見ることができなくなる。
 // $sql='SELECT HTMLWithID FROM mockup WHERE UserID = ? AND WMID = ? AND VersionID = ?;';
-$sql = 'SELECT HTMLWithID FROM mockup WHERE WMID = ? AND VersionID = ?;';
+$sql = 'SELECT HTMLWithID, FROM mockup WHERE WMID = ? AND VersionID = ?;';
 $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
 $stmt->execute(array($wmid, $version_id)); //SQL文を実行
 $count = $stmt->rowCount();

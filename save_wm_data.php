@@ -9,19 +9,19 @@ $password = '21jygr01';
 $pdo = new PDO($dsn, $user, $password);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-//TODO アプリケーションのサーバへの保存ボタンの用意
 $json = file_get_contents('php://input');
 $jsondata = json_decode($json, true);
 $wm_id = $jsondata["wm_id"];
 $wm_name = $jsondata["wm_name"];
+$owner_user_id = $jsondata["owner_user_id"] != "" ? $jsondata["owner_user_id"] : $user_id;
 $register_date_time = $jsondata["register_date_time"];
 $html_with_id = $jsondata["html_with_id"];
 
-$user_id = $userID;
+$user_id = $owner_user_id;
 $next_version_id = "1"; // バージョンはサーバでシーケンシャルな値を設定していくという話に落ち着いていたはず。
-$sql = "SELECT TOP 1 VersionID FROM mockup WHERE WMID = ? ORDER BY VersionID DESC;";
+$sql = "SELECT TOP 1 VersionID FROM mockup WHERE WMID = ? AND UserID = ? ORDER BY VersionID DESC;";
 $stmt = $pdo->prepare($sql);
-$stmt->execute(array($wm_id));
+$stmt->execute(array($wm_id, $owner_user_id));
 $count = $stmt->rowCount();
 if ($count != 0) {
     while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
