@@ -17,7 +17,7 @@ $owner_user_id = $jsondata["owner_user_id"] != "" ? $jsondata["owner_user_id"] :
 $register_date_time = $jsondata["register_date_time"];
 $html_with_id = $jsondata["html_with_id"];
 
-$user_id = $owner_user_id;
+$user_id = $owner_user_id != "" ? $owner_user_id:  $userID = $_SESSION['userID'];
 $next_version_id = "1"; // バージョンはサーバでシーケンシャルな値を設定していくという話に落ち着いていたはず。
 $sql = "SELECT TOP 1 VersionID FROM mockup WHERE WMID = ? AND UserID = ? ORDER BY VersionID DESC;";
 $stmt = $pdo->prepare($sql);
