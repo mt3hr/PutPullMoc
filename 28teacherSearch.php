@@ -57,9 +57,7 @@
                 <th>姓</th>
                 <th>名</th>
                 <th>メールアドレス</th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th id="icon"></th>
             </tr>
             <?php
 
@@ -88,8 +86,8 @@
                         
                         <td>
                         <form method="POST" action="./29teacherSearchDelete.php">
-                            <input class="menubutton" type="hidden" name="userID" value="' . $row['UserID'] . '">
-                            <input class="menubutton" type="submit" value="削除">
+                        <input class="" type="hidden" name="userID" value="' . $row['UserID'] . '">
+                        <input class="iconbutton" type="image" src="img/deleteIcon.png" width="40" alt="削除" title="削除">
                         </form>
                         </td>
                         </tr>

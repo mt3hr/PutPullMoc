@@ -117,7 +117,7 @@
 
 table {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 160px;
     background-color: #e6e6e6;
     border-radius: 5px;
     width: 1000px;
@@ -158,11 +158,4 @@ ul {
 
 li {
     text-align: center;
-}
-.mockbutton{
-    color: steelblue;
-    font-size: large;
-    font-weight: bold;
-    background-color: #e6e6e6;
-    border: #e6e6e6;
 }

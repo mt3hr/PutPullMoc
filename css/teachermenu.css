@@ -57,6 +57,17 @@ h1 {
     font-size: 30px;
     color: steelblue;
 }
-p{
+.menuitem a{
+    text-decoration: none;
     text-align: center;
+    color: black;
+    font-weight: lighter;
+    font-size: medium;
+}
+.menuitem-right a{
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    font-weight: lighter;
+    font-size: medium;
 }
