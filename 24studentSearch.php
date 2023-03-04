@@ -53,6 +53,9 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                             <li class="header-navListItem"><a href="10logout.php">ログアウト</a></li>
                         </ul>
                     </nav>';
+                    //教師ではないのでlogoutさせる
+                    $uri = './10logout.php';
+                    header("Location: " . $uri);
             }
             ?>
         </div>
@@ -159,7 +162,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         <td>
                         <form method="POST" action="./26studentSearchDelete.php">
                             <input class="menubutton" type="hidden" name="userID" value="' . $row['UserID'] . '">
-                            <input class="iconbutton" type="image" src="img/deleteIcon.png" size="10" alt="削除" title="情報編集">
+                            <input class="iconbutton" type="image" src="img/deleteIcon.png" size="10" alt="削除" title="削除">
                         </form>
                         </td>
                         </tr>';

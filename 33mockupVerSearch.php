@@ -57,7 +57,7 @@
                 <table>
                     <tr>
                         <th>バージョン</th>
-                        <th>最終編集日時</th>
+                        <th>作成日時</th>
                         <th></th>
                     </tr>';
         $userID = $_POST['userID']; // 小路へ。userIDにWMIDを代入してるけどミス？
@@ -79,13 +79,13 @@
 
                 print '<tr>
                     <td><form method="GET" name="a_form" action="/">
-                    <input class="menubutton" type="submit" value="' . $row['WMName'] . '">
+                    <input class="menubutton" type="submit" value="' . $row['VersionID'] . '">
                     <input type="hidden" name="wm_id" value="' . $row['WMID'] . '">
                     <input type="hidden" name="owner_user_id" value="' . $row["UserID"] . '">
                             <input type="hidden" name="version_id" value="' . $row['VersionID'] . '">
                     </form>
                     </td>
-                    <td>' . $row["VersionID"] . '</td>
+                    <td>' . $row["RegisterDatetime"] . '</td>
                     <td><form method="POST" name="a_form" action="33MocVerDelete.php">
                             <input type="hidden" name="userID" value="' . $row['UserID'] . '">
                             <input type="hidden" name="WMID" value="' . $row['WMID'] . '">

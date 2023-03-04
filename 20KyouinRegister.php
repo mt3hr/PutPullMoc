@@ -42,6 +42,9 @@
                             <li class="header-navListItem"><a href="10logout.php">ログアウト</a></li>
                         </ul>
                     </nav>';
+                //教師ではないのでlogoutさせる
+                $uri = './10logout.php';
+                header("Location: " . $uri);
             }
             ?>
         </div>
@@ -58,9 +61,43 @@
                     <?php
                     $errorMsg = $_SESSION['errorMsg'] ?? '';
                     print "<p id = 'error'>" . $errorMsg . "</p>";
+                    $error = true;
                     $_SESSION['errorMsg'] = null;
-                    ?>
-                </p>
+                    if ($error) {
+                        print '</p>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <td><input class="text" size="25" type="text" name="userID" placeholder="ユーザID" value="' . $_SESSION['regstuserID'] . '"></td>
+                    </tr>
+                    <tr>
+                        <th>氏名</th>
+                        <td class="name">
+                            <input class="text text-name" size="25" type="text" name="surname" placeholder="姓" value="' . $_SESSION['regstSurname'] . '">
+                        </td>
+                        <td class="name left">
+                            <input class="text text-name" size="25" type="text" name="name" placeholder="名" value="' . $_SESSION['regstName'] . '">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>メールアドレス</th>
+                        <td><input class="text" type="text" name="email" placeholder="メールアドレス" value="' . $_SESSION['regstEmail'] . '"></td>
+                    </tr>
+                    <tr>
+                        <th>パスワード</th>
+                        <td><input class="text" type="password" name="pass" placeholder="パスワード" ></td>
+                    </tr>
+                    <tr>
+                        <th>パスワード再入力</th>
+                        <td><input class="text" type="password" name="repass" placeholder="パスワード再入力"></td>
+                    </tr>
+                </table>';
+                        $_SESSION['regstEmail'] = '';
+                        $_SESSION['regstuserID'] = '';
+                        $_SESSION['regstSurname'] = '';
+                        $_SESSION['regstName'] = '';
+                    } else {
+                        print '</p>
                 <table>
                     <tr>
                         <th>ID</th>
@@ -87,7 +124,9 @@
                         <th>パスワード再入力</th>
                         <td><input class="text" type="password" name="repass" placeholder="パスワード再入力"></td>
                     </tr>
-                </table>
+                </table>';
+                    }
+                    ?>
                 <div class="button-area">
                     <button class="menubutton" type="button" onclick="history.back()">戻る</button>
                     <input class="menubutton" type="submit" value="確認">

@@ -6,6 +6,7 @@ $_errorCode = false;
 if ($_POST['userID'] ?? '' != null) {
     $userID = htmlspecialchars($_POST['userID'], ENT_QUOTES);
 } else {
+    $userID = '';
     $_SESSION['errorMsg'] .= "「ユーザID」";
     // print $_SESSION['errorMsg'];
     $_errorCode = true;
@@ -13,6 +14,7 @@ if ($_POST['userID'] ?? '' != null) {
 if ($_POST['surname'] ?? '' != null) {
     $surname = htmlspecialchars($_POST['surname'], ENT_QUOTES);
 } else {
+    $surname = '';
     $_SESSION['errorMsg'] .= "「姓」";
     // print $_SESSION['errorMsg'];
     $_errorCode = true;
@@ -20,6 +22,7 @@ if ($_POST['surname'] ?? '' != null) {
 if ($_POST['name'] ?? '' != null) {
     $name = htmlspecialchars($_POST['name'], ENT_QUOTES);
 } else {
+    $name = '';
     $_SESSION['errorMsg'] .= "「名」";
     // print $_SESSION['errorMsg'];
     $_errorCode = true;
@@ -27,6 +30,7 @@ if ($_POST['name'] ?? '' != null) {
 if ($_POST['email'] ?? '' != null) {
     $Email = htmlspecialchars($_POST['email'], ENT_QUOTES);
 } else {
+    $Email = '';
     $_SESSION['errorMsg'] .= "「メールアドレス」";
     // print $_SESSION['errorMsg'];
     $_errorCode = true;
@@ -37,6 +41,7 @@ if ($_POST['email'] ?? '' != null) {
 if ($_POST['pass'] ?? '' != null) {
     $pass = htmlspecialchars($_POST['pass'], ENT_QUOTES);
 } else {
+    $pass = '';
     $_SESSION['errorMsg'] .= "「パスワード」";
     // print $_SESSION['errorMsg'];
     $_errorCode = true;
@@ -44,6 +49,7 @@ if ($_POST['pass'] ?? '' != null) {
 if ($_POST['repass'] ?? '' != null) {
     $repass = htmlspecialchars($_POST['repass'], ENT_QUOTES);
 } else {
+    $repass = '';
     $_SESSION['errorMsg'] .= "「パスワード（再入力）」";
     // print $_SESSION['errorMsg'];
     $_errorCode = true;
@@ -51,6 +57,11 @@ if ($_POST['repass'] ?? '' != null) {
 
 if ($_errorCode == true) {
     $_SESSION['errorMsg'] .= "が入力されていません";
+
+    $_SESSION['regstEmail'] = $Email;
+    $_SESSION['regstuserID'] = $userID;
+    $_SESSION['regstSurname'] = $surname;
+    $_SESSION['regstName'] = $name;
 
     $uri = $_SERVER['HTTP_REFERER'];
     header("Location: " . $uri);
@@ -68,6 +79,10 @@ if ($_errorCode == true) {
     $count = $stmt->rowCount();
     if ($count != 0) {
         $_SESSION['errorMsg'] == 'そのユーザIDは、既に登録されています。' . $count;
+        $_SESSION['regstEmail'] = $Email;
+        $_SESSION['regstuserID'] = $userID;
+        $_SESSION['regstSurname'] = $surname;
+        $_SESSION['regstName'] = $name;
         $uri = $_SERVER['HTTP_REFERER'];
         header("Location: " . $uri);
     } else {
@@ -102,12 +117,20 @@ if ($_errorCode == true) {
             } else {
                 $_SESSION['errorMsg'] == "メールアドレスの形式が、間違っています。";
                 // print $_SESSION['errorMsg'];
+                $_SESSION['regstEmail'] = $Email;
+                $_SESSION['regstuserID'] = $userID;
+                $_SESSION['regstSurname'] = $surname;
+                $_SESSION['regstName'] = $name;
                 $uri = $_SERVER['HTTP_REFERER'];
                 header("Location: " . $uri);
             }
         } else {
             $_SESSION['errorMsg'] == "パスワードの形式が間違っています。英数字8文字から50文字以内で入力してください。";
             // print $_SESSION['errorMsg'];
+            $_SESSION['regstEmail'] = $Email;
+            $_SESSION['regstuserID'] = $userID;
+            $_SESSION['regstSurname'] = $surname;
+            $_SESSION['regstName'] = $name;
             $uri = $_SERVER['HTTP_REFERER'];
             header("Location: " . $uri);
         }

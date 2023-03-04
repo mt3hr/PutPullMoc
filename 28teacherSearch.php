@@ -43,6 +43,9 @@
                             <li class="header-navListItem"><a href="10logout.php">ログアウト</a></li>
                         </ul>
                     </nav>';
+                    //教師ではないのでlogoutさせる
+                    $uri = './10logout.php';
+                    header("Location: " . $uri);
             }
             ?>
         </div>

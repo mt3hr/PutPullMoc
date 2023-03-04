@@ -14,6 +14,7 @@
             <!-- TODO ログイン時にuserの役職(学生、教師)をsessionに登録する。そこからメニュー分岐 -->
             <!-- 保存一覧は情報を渡さないか、自分を渡すかして、表示できるようにする -->
             <?php
+            session_cache_limiter('none');
             session_start();
             if ($_SESSION['position'] == "t") {
                 print
@@ -42,6 +43,9 @@
                             <li class="header-navListItem"><a href="10logout.php">ログアウト</a></li>
                         </ul>
                     </nav>';
+                    //教師ではないのでlogoutさせる
+                    $uri = './10logout.php';
+                    header("Location: " . $uri);
             }
             ?>
         </div>
@@ -64,7 +68,7 @@
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-                $sql = 'SELECT StudentID,userTable.UserID,Email,LastName,FirstName FROM userTable inner join student on userTable.UserID = student.UserID WHERE userTable.UserID = ?;';
+                $sql = 'SELECT userTable.UserID,Email,LastName,FirstName FROM userTable WHERE userTable.UserID = ?;';
                 $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
                 $stmt->execute(array($userID)); //SQL文を実行
                 $count = $stmt->rowCount();
@@ -73,14 +77,11 @@
                 while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
                     print '
                     <tr>
-                    <th>学籍番号</th>
-                    <td>' . $row['StudentID'] . '</td>
-                    </tr>
-                    <tr>
                     <th>氏名</th>
                     <td>' . $row['LastName'] . '</td>
                     <td>' . $row['FirstName'] . '</td>
                     </tr>
+                    <tr>
                     <th>メールアドレス</th>
                     <td>' . $row['Email'] . '</td>
                     </tr>';
@@ -89,10 +90,14 @@
                 ?>
             </table>
             <div class=button-area>
-                <form method="POST" action="./29teacherSearchDeleteAct.php"><button type="submit" class="menubutton"
-                        name="userID" value="' . $row['UserID'] . '">削除</button></from>
-                    <button class="menubutton" type="button" onclick="history.back()">戻る</button>
-                </form>
+                <?php
+                print '<form method="POST" action="./29teacherSearchDeleteAct.php">
+                <button class="menubutton" type="button" onclick="history.back()">戻る</button>
+                <button type="submit" class="menubutton"
+                        name="userID" value="' . $userID . '">削除</button></from>
+                    
+                </form>';
+                ?>
             </div>
     </div>
 </body>

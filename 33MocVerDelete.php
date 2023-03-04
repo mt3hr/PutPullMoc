@@ -82,6 +82,10 @@
                     <th>モックアップ名</th>
                     <td>' . $row['WMName'] . '</td>
                     </tr>
+                    <tr>
+                    <th>バージョン</th>
+                    <td>' . $row['VersionID'] . '</td>
+                    </tr>
                     
                     </table>
                     

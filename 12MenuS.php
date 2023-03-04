@@ -54,8 +54,8 @@
         <div class="menulist">
             <div class="menuitem">
                 <?php
-                $userID = $_SESSION['userID'];
-                print '<a href="./31mockupSearch.php?userID=' . $userID . '">';
+                
+                print '<a href="./31mockupSearch.php">';
                 ?>
 
                 <div class="icon">

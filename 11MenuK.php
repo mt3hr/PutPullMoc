@@ -41,7 +41,11 @@
                             <li class="header-navListItem"><a href="/">新規作成</a></li>
                             <li class="header-navListItem"><a href="10logout.php">ログアウト</a></li>
                         </ul>
-                    </nav>';
+                    </nav>
+                    ';
+                    //教師ではないのでlogoutさせる
+                    $uri = './10logout.php';
+                    header("Location: " . $uri);
             }
             ?>
         </div>
@@ -106,8 +110,7 @@
         <div class="menulist">
             <div class="menuitem">
                 <?php
-                $userID = $_SESSION['userID'];
-                print '<a href="./31mockupSearch.php?userID=' . $userID . '">';
+                print '<a href="./31mockupSearch.php">';
                 ?>
 
                 <div class="icon">
