@@ -59,7 +59,9 @@
 }
 
 .iconbutton {
+    padding: 5px;
     background-color: steelblue;
+    border-radius: 5px;
 }
 
 
@@ -115,9 +117,9 @@
 
 table {
     text-align: center;
+    margin-top: 50px;
     background-color: #e6e6e6;
     border-radius: 5px;
-    margin-top: 10px;
     width: 1000px;
     table-layout: fixed;
 }
@@ -130,6 +132,18 @@ td {
 th {
     color: steelblue;
     font-size: larger;
+}
+#mail{
+    width: 350px;
+}
+#num{
+    width: 100px;
+}
+#name{
+    width: 110px;
+}
+#icon{
+    width: 80px;
 }
 
 .button-area {
@@ -144,4 +158,11 @@ ul {
 
 li {
     text-align: center;
+}
+.mockbutton{
+    color: steelblue;
+    font-size: large;
+    font-weight: bold;
+    background-color: #e6e6e6;
+    border: #e6e6e6;
 }
