@@ -21,7 +21,7 @@ $stmt->execute(array($_POST["userid"], $_POST["userid"])); //SQL文を実行
 
 
 
-$uri = './19StudentRegisterFinish.php';
+$uri = './23KyouinRegisterFinish.php';
 header("Location: " . $uri);
 
 ?>

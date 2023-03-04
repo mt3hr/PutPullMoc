@@ -19,7 +19,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Teko:wght@600&display=swap" rel="stylesheet">
     <link href="css/glovalnavigation.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/studentsearch.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/studentsearchtable.css" rel="stylesheet" type="text/css" media="all">
     <header class="header">
         <div class="header-inner">
 
@@ -69,8 +69,8 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                     <p>名前で検索</p>
 
-                    <input class="text" type="text" name="stulastname" placeholder="苗字">
-                    <input class="text" type="text" name="stufirstname" placeholder="名前"><input class="searchbutton" type="submit"
+                    <input class="text" type="text" name="stulastname" placeholder="姓">
+                    <input class="text" type="text" name="stufirstname" placeholder="名"><input class="searchbutton" type="submit"
                         class="menubutton" value="検索">
 
                 </form>
@@ -84,15 +84,15 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             </ul>
         </div>
-        <table>
+        <table id="student">
             <tr>
-                <th>学籍番号</th>
-                <th>姓</th>
-                <th>名</th>
-                <th>メールアドレス</th>
+                <th id="num">学籍番号</th>
+                <th id="name">姓</th>
+                <th id="name">名</th>
+                <th id="mail">メールアドレス</th>
                 <th></th>
-                <th></th>
-                <th></th>
+                <th id="icon"></th>
+                <th id="icon"></th>
             </tr>
             <?php
             if ($_POST['stunum'] ?? '' != null ) {
@@ -153,13 +153,13 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         <td>
                         <form method="POST" action="./13MyPage.php">
                             <input type="hidden" name="userID" value="' . $row['UserID'] . '">
-                            <input class="iconbutton" type="image" src="img/studentEditIcon.png" size="10" alt="情報編集" title="情報編集">
+                            <input class="iconbutton" type="image" src="img/studentEditIcon.png" width="40" alt="情報編集" title="情報編集">
                         </form>
                         </td>
                         <td>
                         <form method="POST" action="./26studentSearchDelete.php">
-                            <input class="menubutton" type="hidden" name="userID" value="' . $row['UserID'] . '">
-                            <input class="iconbutton" type="image" src="img/deleteIcon.png" size="10" alt="削除" title="情報編集">
+                            <input class="" type="hidden" name="userID" value="' . $row['UserID'] . '">
+                            <input class="iconbutton" type="image" src="img/deleteIcon.png" width="40" alt="削除" title="削除">
                         </form>
                         </td>
                         </tr>';

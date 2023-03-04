@@ -58,7 +58,7 @@
                     <tr>
                         <th>バージョン</th>
                         <th>最終編集日時</th>
-                        <th></th>
+                        <th id="icon"></th>
                     </tr>';
         $userID = $_POST['userID']; // 小路へ。userIDにWMIDを代入してるけどミス？
         $WMID = $_POST['WMID'];
@@ -79,7 +79,7 @@
 
                 print '<tr>
                     <td><form method="GET" name="a_form" action="/">
-                    <input class="menubutton" type="submit" value="' . $row['WMName'] . '">
+                    <input class="mockbutton" type="submit" value="' . $row['WMName'] . '">
                     <input type="hidden" name="wm_id" value="' . $row['WMID'] . '">
                     <input type="hidden" name="owner_user_id" value="' . $row["UserID"] . '">
                             <input type="hidden" name="version_id" value="' . $row['VersionID'] . '">
@@ -90,7 +90,7 @@
                             <input type="hidden" name="userID" value="' . $row['UserID'] . '">
                             <input type="hidden" name="WMID" value="' . $row['WMID'] . '">
                             <input type="hidden" name="VersionID" value="' . $row['VersionID'] . '">
-                            <input class="menubutton" type="submit" value="削除">
+                            <input class="iconbutton" type="image" src="img/deleteIcon.png" width="40" alt="削除" title="削除">
                             </form>
                         </td>
                     </tr>';
