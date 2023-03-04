@@ -61,8 +61,10 @@
                     <?php
                     $errorMsg = $_SESSION['errorMsg'] ?? '';
                     print "<p id = 'error'>" . $errorMsg . "</p>";
-                    $error = true;
-                    $_SESSION['errorMsg'] = null;
+                    $errorMsg = '';
+
+                    $error = $_SESSION['error'] ?? '';
+
                     if ($error) {
                         print '</p>
                 <table>
@@ -126,6 +128,7 @@
                     </tr>
                 </table>';
                     }
+                    $error = "";
                     ?>
                 <div class="button-area">
                     <button class="menubutton" type="button" onclick="history.back()">戻る</button>

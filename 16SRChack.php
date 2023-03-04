@@ -57,7 +57,7 @@ if ($_POST['repass'] ?? '' != null) {
 
 if ($_errorCode == true) {
     $_SESSION['errorMsg'] .= "が入力されていません";
-
+    $_SESSION['error'] = true;
     $_SESSION['regstEmail'] = $Email;
     $_SESSION['regstuserID'] = $userID;
     $_SESSION['regstSurname'] = $surname;
@@ -82,6 +82,7 @@ if ($_errorCode == true) {
         $_SESSION['regstuserID'] = $userID;
         $_SESSION['regstSurname'] = $surname;
         $_SESSION['regstName'] = $name;
+        $_SESSION['error'] = true;
         $uri = $_SERVER['HTTP_REFERER'];
         header("Location: " . $uri);
     } else {
@@ -111,6 +112,7 @@ if ($_errorCode == true) {
                     $_SESSION['regstuserID'] = $userID;
                     $_SESSION['regstSurname'] = $surname;
                     $_SESSION['regstName'] = $name;
+                    $_SESSION['error'] = true;
                     $uri = $_SERVER['HTTP_REFERER'];
                     header("Location: " . $uri);
                 }
@@ -124,6 +126,7 @@ if ($_errorCode == true) {
                 $_SESSION['regstuserID'] = $userID;
                 $_SESSION['regstSurname'] = $surname;
                 $_SESSION['regstName'] = $name;
+                $_SESSION['error'] = true;
                 $uri = $_SERVER['HTTP_REFERER'];
                 header("Location: " . $uri);
             }
@@ -134,6 +137,7 @@ if ($_errorCode == true) {
             $_SESSION['regstuserID'] = $userID;
             $_SESSION['regstSurname'] = $surname;
             $_SESSION['regstName'] = $name;
+            $_SESSION['error'] = true;
             $uri = $_SERVER['HTTP_REFERER'];
             header("Location: " . $uri);
         }
