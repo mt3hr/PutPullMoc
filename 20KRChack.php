@@ -62,6 +62,7 @@ if ($_errorCode == true) {
     $_SESSION['regstuserID'] = $userID;
     $_SESSION['regstSurname'] = $surname;
     $_SESSION['regstName'] = $name;
+    $_SESSION['error'] = true;
 
     $uri = $_SERVER['HTTP_REFERER'];
     header("Location: " . $uri);
@@ -83,6 +84,7 @@ if ($_errorCode == true) {
         $_SESSION['regstuserID'] = $userID;
         $_SESSION['regstSurname'] = $surname;
         $_SESSION['regstName'] = $name;
+        $_SESSION['error'] = true;
         $uri = $_SERVER['HTTP_REFERER'];
         header("Location: " . $uri);
     } else {
@@ -109,6 +111,11 @@ if ($_errorCode == true) {
                 } else {
                     $_SESSION['errorMsg'] == 'そのメールアドレスは、既に登録されています。';
                     $uri = $_SERVER['HTTP_REFERER'];
+                    $_SESSION['regstEmail'] = $Email;
+                    $_SESSION['regstuserID'] = $userID;
+                    $_SESSION['regstSurname'] = $surname;
+                    $_SESSION['regstName'] = $name;
+                    $_SESSION['error'] = true;
                     header("Location: " . $uri);
                 }
 
@@ -121,6 +128,7 @@ if ($_errorCode == true) {
                 $_SESSION['regstuserID'] = $userID;
                 $_SESSION['regstSurname'] = $surname;
                 $_SESSION['regstName'] = $name;
+                $_SESSION['error'] = true;
                 $uri = $_SERVER['HTTP_REFERER'];
                 header("Location: " . $uri);
             }
@@ -131,6 +139,7 @@ if ($_errorCode == true) {
             $_SESSION['regstuserID'] = $userID;
             $_SESSION['regstSurname'] = $surname;
             $_SESSION['regstName'] = $name;
+            $_SESSION['error'] = true;
             $uri = $_SERVER['HTTP_REFERER'];
             header("Location: " . $uri);
         }
