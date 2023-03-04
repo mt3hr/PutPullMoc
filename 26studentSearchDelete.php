@@ -52,6 +52,7 @@
     <div class="menu-page">
         <h1>| 学生情報削除</h1>
         <p>以下の内容を削除してもよろしいですか。</p>
+        <div class="paper">
 
         <?php
         //TODOセッションログイン情報から自分のデータを持ってくる
@@ -88,6 +89,7 @@
                         <td>' . $row['Email'] . '</td>
                         </tr>
                     </table>
+                    </div>
                     <div class=button-area>
                         
                         <form method="POST" action="./26studentSearchDeleteAct.php">

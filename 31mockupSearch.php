@@ -76,7 +76,7 @@
                     <tr>
                         <th>モックアップ名</th>
                         <th>最終編集日時</th>
-                        <th></th>
+                        <th id="icon"></th>
                     </tr>';
         }
         // 最終編集日時の属性を作成し、RegisterDatetimeから書き換える。
@@ -93,7 +93,7 @@
                             <input type="hidden" name="userID" value="' . $row['UserID'] . '">
                             <input type="hidden" name="WMID" value="' . $row['WMID'] . '">
                             <input type="hidden" name="WMName" value="' . $row['WMName'] . '">
-                            <input type="submit" value="' . $row['WMName'] . '">
+                            <input class="mockbutton" type="submit" value="' . $row['WMName'] . '">
                             </form>
                         </td>
                     <td>' . $row['RegisterDatetime'] . '</td>
@@ -101,7 +101,7 @@
                             <input type="hidden" name="userID" value="' . $row['UserID'] . '">
                             <input type="hidden" name="WMID" value="' . $row['WMID'] . '">
                             <input type="hidden" name="WMName" value="' . $row['WMName'] . '">
-                            <input class="menubutton" type="submit" value="削除">
+                            <input class="iconbutton" type="image" src="img/deleteIcon.png" width="40" alt="削除" title="削除">
                             </form>
                         </td>
                     </tr>';
