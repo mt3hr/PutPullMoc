@@ -103,7 +103,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sql = "SELECT userTable.UserID,Email,LastName,FirstName FROM userTable INNER JOIN student ON userTable.UserID = student.UserID WHERE userTable.UserID LIKE ?;";
                 $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
                 $stmt->execute(array('%' . $stunum . '%')); //SQL文を実行
-                print '<p>やあ！</p>';
+            
             } else if ($_POST['stufirstname'] ?? '' != null) {
                 if ($_POST['stufirstname'] == null) {
                     $_POST['stufirstname'] = "";
@@ -170,7 +170,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } else {
 
 
-                session_start();
+
                 $errorMsg = $_SESSION['errorMsg'] ?? '';
                 print "<p id = 'error'> 検索結果0件</p>";
                 $_SESSION['errorMsg'] = null;

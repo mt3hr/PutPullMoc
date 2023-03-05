@@ -57,7 +57,7 @@ if (is_mail($email)) {
     $_SESSION['MPuserID'] = $_POST['userID'];
     $uri = "./13MyPage.php";
     header("Location: " . $uri);
-
+    
 
 } else {
     $_SESSION['MPuserID'] = $_POST['userID'];
