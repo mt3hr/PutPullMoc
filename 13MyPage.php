@@ -118,7 +118,13 @@
             </table>
         </div>
         <div class="button-area">
-            <button class="mypagebutton" type="button" onclick="history.back()">戻る</button>
+            <?php
+            if($_SESSION['userID'] == $userID){
+                print '<form method="POST" action="/11MenuK.php"><input class="mypagebutton" type="submit" value="戻る"></form>';
+            }else{
+                print '<form method="POST" action="/24studentSearch.php"><input class="mypagebutton" type="submit" value="戻る"></form>';
+            }
+            ?>
         </div>
     </div>
 </body>

@@ -60,7 +60,7 @@
         <div class="button-area">
             <!-- 小路とさいとうさんへ。buttonからinputに変更があったようなのでCSS再適用が必要かもしれないです。 -->
             <!-- もともとあったコード→ <button class="menubutton" type="button" onclick="history.back()">戻る</button> -->
-            <form action="20KyouinRegister.html">
+            <form action="20KyouinRegister.php">
                 <input class="menubutton" type="submit" value="戻る">
             </form>
         </div>
