@@ -62,8 +62,9 @@
                     $errorMsg = $_SESSION['errorMsg'] ?? '';
                     print "<p id = 'error'>" . $errorMsg . "</p>";
                     $error = true;
-                    $_SESSION['errorMsg'] = null;
                     $error = $_SESSION['error'] ?? '';
+                    $_SESSION['errorMsg']=null;
+                    $_SESSION['error']=null;
                     if ($error) {
                         print '</p>
                 <table>

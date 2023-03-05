@@ -3,7 +3,7 @@
 <?php
 session_start();
 
-
+$_SESSION['error'] = null;
 $dsn = 'sqlsrv:server=10.42.129.3;database=21jygr01';
 $user = '21jygr01';
 $password = '21jygr01';

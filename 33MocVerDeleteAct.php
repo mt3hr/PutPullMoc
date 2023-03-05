@@ -21,7 +21,7 @@ $stmt->execute(array($userID, $WMID, $VersionID)); //SQL文を実行
 
 $_SESSION['WMID'] = $WMID;
 $_SESSION['VersionID'] = $VersionID;
-$_SESSION['WMName'] = $VersionID;
+$_SESSION['WMName'] = $_POST['WMName'];
 $_SESSION['mocUserID'] = $userID;
 $uri = './33MocVerDeleteFinish.php';
 header("Location: " . $uri);

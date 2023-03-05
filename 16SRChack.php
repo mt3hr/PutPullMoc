@@ -56,7 +56,7 @@ if ($_POST['repass'] ?? '' != null) {
 }
 
 if ($_errorCode == true) {
-    $_SESSION['errorMsg'] .= "が入力されていません";
+    $_SESSION['errorMsg'] .= "が入力されていません。";
     $_SESSION['error'] = true;
     $_SESSION['regstEmail'] = $Email;
     $_SESSION['regstuserID'] = $userID;
@@ -77,7 +77,7 @@ if ($_errorCode == true) {
     $stmt->execute(array($userID)); //SQL文を実行
     $count = $stmt->rowCount();
     if ($count != 0) {
-        $_SESSION['errorMsg'] == 'そのユーザIDは、既に登録されています。' . $count;
+        $_SESSION['errorMsg'] .= 'そのユーザIDは、既に登録されています。';
         $_SESSION['regstEmail'] = $Email;
         $_SESSION['regstuserID'] = $userID;
         $_SESSION['regstSurname'] = $surname;
@@ -97,17 +97,29 @@ if ($_errorCode == true) {
         if (is_password($pass)) {
             if (is_mail($Email)) {
                 if ($count == 0) {
-                    $_SESSION['regstEmail'] = $Email;
-                    $_SESSION['regstPass'] = $pass;
-                    $_SESSION['regstuserID'] = $userID;
-                    $_SESSION['regstSurname'] = $surname;
-                    $_SESSION['regstName'] = $name;
+                    if ($pass == $repass) {
+                        $_SESSION['regstEmail'] = $Email;
+                        $_SESSION['regstPass'] = $pass;
+                        $_SESSION['regstuserID'] = $userID;
+                        $_SESSION['regstSurname'] = $surname;
+                        $_SESSION['regstName'] = $name;
 
 
-                    $uri = './18StudentRegister.php';
-                    header("Location: " . $uri);
+                        $uri = './18StudentRegister.php';
+                        header("Location: " . $uri);
+                    } else {
+                        $_SESSION['errorMsg'] .= 'パスワードが一致しません。';
+                        $_SESSION['regstEmail'] = $Email;
+                        $_SESSION['regstuserID'] = $userID;
+                        $_SESSION['regstSurname'] = $surname;
+                        $_SESSION['regstName'] = $name;
+                        $_SESSION['error'] = true;
+                        $uri = $_SERVER['HTTP_REFERER'];
+                        header("Location: " . $uri);
+                    }
+
                 } else {
-                    $_SESSION['errorMsg'] == 'そのメールアドレスは、既に登録されています。';
+                    $_SESSION['errorMsg'] .= 'そのメールアドレスは、既に登録されています。';
                     $_SESSION['regstEmail'] = $Email;
                     $_SESSION['regstuserID'] = $userID;
                     $_SESSION['regstSurname'] = $surname;
@@ -120,7 +132,7 @@ if ($_errorCode == true) {
 
 
             } else {
-                $_SESSION['errorMsg'] == "メールアドレスの形式が、間違っています。";
+                $_SESSION['errorMsg'] .= "メールアドレスの形式が、間違っています。";
                 // print $_SESSION['errorMsg'];
                 $_SESSION['regstEmail'] = $Email;
                 $_SESSION['regstuserID'] = $userID;
@@ -131,7 +143,7 @@ if ($_errorCode == true) {
                 header("Location: " . $uri);
             }
         } else {
-            $_SESSION['errorMsg'] == "パスワードの形式が間違っています。英数字8文字から50文字以内で入力してください。";
+            $_SESSION['errorMsg'] .= "パスワードの形式が間違っています。英数字8文字から50文字以内で入力してください。";
             // print $_SESSION['errorMsg'];
             $_SESSION['regstEmail'] = $Email;
             $_SESSION['regstuserID'] = $userID;

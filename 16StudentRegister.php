@@ -64,7 +64,8 @@
                     $errorMsg = '';
 
                     $error = $_SESSION['error'] ?? '';
-
+                    $_SESSION['errorMsg'] = null;
+                    $_SESSION['error'] = null;
                     if ($error) {
                         print '</p>
                 <table>

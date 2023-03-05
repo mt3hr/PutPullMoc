@@ -42,9 +42,9 @@
                             <li class="header-navListItem"><a href="10logout.php">ログアウト</a></li>
                         </ul>
                     </nav>';
-                    //教師ではないのでlogoutさせる
-                    $uri = './10logout.php';
-                    header("Location: " . $uri);
+                //教師ではないのでlogoutさせる
+                $uri = './10logout.php';
+                header("Location: " . $uri);
             }
             ?>
         </div>
@@ -84,8 +84,10 @@
 
 
             <form action="23KRDataInsert.php" method="POST">
+
                 <button class="menubutton" type="button" onclick="history.back()">戻る</button>
                 <?php
+                $_SESSION['error'] = true;
                 print '<input type="hidden" name="userid" value="' . $_SESSION['regstuserID'] . '">
                     <input type="hidden" name="surname" value="' . $_SESSION['regstSurname'] . '">
                     <input type="hidden" name="name" value="' . $_SESSION['regstName'] . '">
