@@ -79,7 +79,7 @@ if ($_errorCode == true) {
     $stmt->execute(array($userID)); //SQL文を実行
     $count = $stmt->rowCount();
     if ($count != 0) {
-        $_SESSION['errorMsg'] .= 'そのユーザIDは、既に登録されています。' . $count;
+        $_SESSION['errorMsg'] .= 'そのユーザIDは、既に登録されています。' ;
         $_SESSION['regstEmail'] = $Email;
         $_SESSION['regstuserID'] = $userID;
         $_SESSION['regstSurname'] = $surname;
